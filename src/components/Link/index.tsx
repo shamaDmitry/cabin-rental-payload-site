@@ -2,6 +2,8 @@ import { Button, type ButtonProps } from '@/components/ui/button'
 import { cn } from '@/utilities/ui'
 import Link from 'next/link'
 import React from 'react'
+import * as LucideIcons from 'lucide-react'
+import type { LucideProps } from 'lucide-react'
 
 import type { Page, Post } from '@/payload-types'
 
@@ -10,6 +12,9 @@ type CMSLinkType = {
   children?: React.ReactNode
   className?: string
   label?: string | null
+  icon?: string | null
+  iconPosition?: 'before' | 'after' | null
+  iconSize?: '16' | '20' | '24' | null
   newTab?: boolean | null
   reference?: {
     relationTo: 'pages' | 'posts'
@@ -27,6 +32,9 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
     children,
     className,
     label,
+    icon,
+    iconPosition = 'after',
+    iconSize,
     newTab,
     reference,
     size: sizeFromProps,
@@ -47,10 +55,22 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
 
   /* Ensure we don't break any styles set by richText */
   if (appearance === 'inline') {
+    const Icon = icon
+      ? (LucideIcons as unknown as Record<string, React.ComponentType<LucideProps>>)[icon]
+      : null
+
     return (
       <Link className={cn(className)} href={href || url || ''} {...newTabProps}>
+        {iconPosition === 'before' && Icon ? (
+          <Icon className="inline-block" size={iconSize || '16'} />
+        ) : null}
+
         {label && label}
         {children && children}
+
+        {iconPosition === 'after' && Icon ? (
+          <Icon className="inline-block" size={iconSize || '16'} />
+        ) : null}
       </Link>
     )
   }
@@ -58,8 +78,26 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
   return (
     <Button asChild className={className} size={size} variant={appearance}>
       <Link className={cn(className)} href={href || url || ''} {...newTabProps}>
-        {label && label}
-        {children && children}
+        {(() => {
+          const Icon = icon
+            ? (LucideIcons as unknown as Record<string, React.ComponentType<LucideProps>>)[icon]
+            : null
+
+          return (
+            <>
+              {iconPosition === 'before' && Icon ? (
+                <Icon className="inline-block" size={iconSize || '16'} />
+              ) : null}
+
+              {label && label}
+              {children && children}
+
+              {iconPosition === 'after' && Icon ? (
+                <Icon className="inline-block" size={iconSize || '16'} />
+              ) : null}
+            </>
+          )
+        })()}
       </Link>
     </Button>
   )

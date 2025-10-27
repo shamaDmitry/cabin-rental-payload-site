@@ -1,63 +1,63 @@
-import Container from "@/components/core/Container";
-import Headline, { Level } from "@/components/core/Headline";
-import { Button } from "@/components/ui/button";
-import { ArrowBigDown } from "lucide-react";
-import { v4 as uuidv4 } from "uuid";
+import Container from '@/components/core/Container'
+import Headline, { Level } from '@/components/core/Headline'
+import { Button } from '@/components/ui/button'
+import { ArrowBigDown } from 'lucide-react'
+import { v4 as uuidv4 } from 'uuid'
 
 const buttons: React.ComponentProps<typeof Button>[] = [
   {
     id: uuidv4(),
-    variant: "default",
-    children: "Primary",
+    variant: 'default',
+    children: 'Primary',
   },
   {
     id: uuidv4(),
-    variant: "secondary",
-    children: "secondary",
+    variant: 'secondary',
+    children: 'secondary',
   },
   {
     id: uuidv4(),
-    variant: "destructive",
-    children: "destructive",
+    variant: 'destructive',
+    children: 'destructive',
   },
   {
     id: uuidv4(),
-    variant: "outline",
-    children: "outline",
+    variant: 'outline',
+    children: 'outline',
   },
   {
     id: uuidv4(),
-    variant: "ghost",
-    size: "icon",
+    variant: 'ghost',
+    size: 'icon',
     children: <ArrowBigDown />,
   },
   {
     id: uuidv4(),
-    variant: "link",
-    children: "link",
+    variant: 'link',
+    children: 'link',
   },
   {
     id: uuidv4(),
-    size: "sm",
-    children: "small",
+    size: 'sm',
+    children: 'small',
   },
   {
     id: uuidv4(),
-    size: "lg",
-    children: "Large",
+    size: 'lg',
+    children: 'Large',
   },
-];
+]
 
 const DsPage = () => {
   return (
     <Container className="py-12">
-      <div className="flex gap-4 flex-wrap">
+      <div className="flex gap-4 flex-wrap mb-4">
         {buttons.map((button) => {
           return (
             <Button key={button.id} {...button}>
               {button.children}
             </Button>
-          );
+          )
         })}
       </div>
 
@@ -66,7 +66,7 @@ const DsPage = () => {
           .fill(0)
           .map((_, i) => (
             <Headline
-              as={`h${i + 1}` as "h1" | "h2" | "h3" | "h4" | "h5" | "h6"}
+              as={`h${i + 1}` as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'}
               level={(i + 1) as Level}
               key={i}
             >
@@ -75,7 +75,7 @@ const DsPage = () => {
           ))}
       </div>
     </Container>
-  );
-};
+  )
+}
 
-export default DsPage;
+export default DsPage

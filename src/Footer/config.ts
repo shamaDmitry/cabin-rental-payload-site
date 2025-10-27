@@ -25,6 +25,15 @@ export const Footer: GlobalConfig = {
         },
       },
     },
+    {
+      name: 'socialLinks',
+      type: 'array',
+      fields: [
+        link({
+          appearances: false,
+        }),
+      ],
+    },
   ],
   hooks: {
     afterChange: [revalidateFooter],

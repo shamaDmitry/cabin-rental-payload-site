@@ -185,6 +185,35 @@ export interface Page {
              * Choose how the link should be rendered.
              */
             appearance?: ('default' | 'outline') | null;
+            /**
+             * Optional: choose a Lucide icon (the name of the icon exported from `lucide-react`). Leave empty for no icon.
+             */
+            icon?:
+              | (
+                  | ''
+                  | 'ExternalLink'
+                  | 'ArrowRight'
+                  | 'ArrowUpRight'
+                  | 'Menu'
+                  | 'Search'
+                  | 'Check'
+                  | 'ChevronRight'
+                  | 'ChevronLeft'
+                  | 'Facebook'
+                  | 'Instagram'
+                  | 'Linkedin'
+                  | 'Twitter'
+                  | 'MapPin'
+                  | 'Phone'
+                  | 'Mail'
+                  | 'Calendar'
+                  | 'User'
+                  | 'Star'
+                  | 'Heart'
+                )
+              | null;
+            iconPosition?: ('after' | 'before') | null;
+            iconSize?: ('16' | '20' | '24') | null;
           };
           id?: string | null;
         }[]
@@ -441,6 +470,35 @@ export interface CallToActionBlock {
            * Choose how the link should be rendered.
            */
           appearance?: ('default' | 'outline') | null;
+          /**
+           * Optional: choose a Lucide icon (the name of the icon exported from `lucide-react`). Leave empty for no icon.
+           */
+          icon?:
+            | (
+                | ''
+                | 'ExternalLink'
+                | 'ArrowRight'
+                | 'ArrowUpRight'
+                | 'Menu'
+                | 'Search'
+                | 'Check'
+                | 'ChevronRight'
+                | 'ChevronLeft'
+                | 'Facebook'
+                | 'Instagram'
+                | 'Linkedin'
+                | 'Twitter'
+                | 'MapPin'
+                | 'Phone'
+                | 'Mail'
+                | 'Calendar'
+                | 'User'
+                | 'Star'
+                | 'Heart'
+              )
+            | null;
+          iconPosition?: ('after' | 'before') | null;
+          iconSize?: ('16' | '20' | '24') | null;
         };
         id?: string | null;
       }[]
@@ -491,6 +549,35 @@ export interface ContentBlock {
            * Choose how the link should be rendered.
            */
           appearance?: ('default' | 'outline') | null;
+          /**
+           * Optional: choose a Lucide icon (the name of the icon exported from `lucide-react`). Leave empty for no icon.
+           */
+          icon?:
+            | (
+                | ''
+                | 'ExternalLink'
+                | 'ArrowRight'
+                | 'ArrowUpRight'
+                | 'Menu'
+                | 'Search'
+                | 'Check'
+                | 'ChevronRight'
+                | 'ChevronLeft'
+                | 'Facebook'
+                | 'Instagram'
+                | 'Linkedin'
+                | 'Twitter'
+                | 'MapPin'
+                | 'Phone'
+                | 'Mail'
+                | 'Calendar'
+                | 'User'
+                | 'Star'
+                | 'Heart'
+              )
+            | null;
+          iconPosition?: ('after' | 'before') | null;
+          iconSize?: ('16' | '20' | '24') | null;
         };
         id?: string | null;
       }[]
@@ -1021,6 +1108,9 @@ export interface PagesSelect<T extends boolean = true> {
                     url?: T;
                     label?: T;
                     appearance?: T;
+                    icon?: T;
+                    iconPosition?: T;
+                    iconSize?: T;
                   };
               id?: T;
             };
@@ -1067,6 +1157,9 @@ export interface CallToActionBlockSelect<T extends boolean = true> {
               url?: T;
               label?: T;
               appearance?: T;
+              icon?: T;
+              iconPosition?: T;
+              iconSize?: T;
             };
         id?: T;
       };
@@ -1093,6 +1186,9 @@ export interface ContentBlockSelect<T extends boolean = true> {
               url?: T;
               label?: T;
               appearance?: T;
+              icon?: T;
+              iconPosition?: T;
+              iconSize?: T;
             };
         id?: T;
       };
@@ -1577,6 +1673,35 @@ export interface Header {
               } | null);
           url?: string | null;
           label: string;
+          /**
+           * Optional: choose a Lucide icon (the name of the icon exported from `lucide-react`). Leave empty for no icon.
+           */
+          icon?:
+            | (
+                | ''
+                | 'ExternalLink'
+                | 'ArrowRight'
+                | 'ArrowUpRight'
+                | 'Menu'
+                | 'Search'
+                | 'Check'
+                | 'ChevronRight'
+                | 'ChevronLeft'
+                | 'Facebook'
+                | 'Instagram'
+                | 'Linkedin'
+                | 'Twitter'
+                | 'MapPin'
+                | 'Phone'
+                | 'Mail'
+                | 'Calendar'
+                | 'User'
+                | 'Star'
+                | 'Heart'
+              )
+            | null;
+          iconPosition?: ('after' | 'before') | null;
+          iconSize?: ('16' | '20' | '24') | null;
         };
         id?: string | null;
       }[]
@@ -1606,6 +1731,84 @@ export interface Footer {
               } | null);
           url?: string | null;
           label: string;
+          /**
+           * Optional: choose a Lucide icon (the name of the icon exported from `lucide-react`). Leave empty for no icon.
+           */
+          icon?:
+            | (
+                | ''
+                | 'ExternalLink'
+                | 'ArrowRight'
+                | 'ArrowUpRight'
+                | 'Menu'
+                | 'Search'
+                | 'Check'
+                | 'ChevronRight'
+                | 'ChevronLeft'
+                | 'Facebook'
+                | 'Instagram'
+                | 'Linkedin'
+                | 'Twitter'
+                | 'MapPin'
+                | 'Phone'
+                | 'Mail'
+                | 'Calendar'
+                | 'User'
+                | 'Star'
+                | 'Heart'
+              )
+            | null;
+          iconPosition?: ('after' | 'before') | null;
+          iconSize?: ('16' | '20' | '24') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  socialLinks?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: string | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: string | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+          /**
+           * Optional: choose a Lucide icon (the name of the icon exported from `lucide-react`). Leave empty for no icon.
+           */
+          icon?:
+            | (
+                | ''
+                | 'ExternalLink'
+                | 'ArrowRight'
+                | 'ArrowUpRight'
+                | 'Menu'
+                | 'Search'
+                | 'Check'
+                | 'ChevronRight'
+                | 'ChevronLeft'
+                | 'Facebook'
+                | 'Instagram'
+                | 'Linkedin'
+                | 'Twitter'
+                | 'MapPin'
+                | 'Phone'
+                | 'Mail'
+                | 'Calendar'
+                | 'User'
+                | 'Star'
+                | 'Heart'
+              )
+            | null;
+          iconPosition?: ('after' | 'before') | null;
+          iconSize?: ('16' | '20' | '24') | null;
         };
         id?: string | null;
       }[]
@@ -1629,6 +1832,9 @@ export interface HeaderSelect<T extends boolean = true> {
               reference?: T;
               url?: T;
               label?: T;
+              icon?: T;
+              iconPosition?: T;
+              iconSize?: T;
             };
         id?: T;
       };
@@ -1652,6 +1858,26 @@ export interface FooterSelect<T extends boolean = true> {
               reference?: T;
               url?: T;
               label?: T;
+              icon?: T;
+              iconPosition?: T;
+              iconSize?: T;
+            };
+        id?: T;
+      };
+  socialLinks?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              icon?: T;
+              iconPosition?: T;
+              iconSize?: T;
             };
         id?: T;
       };
