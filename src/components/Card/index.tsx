@@ -42,7 +42,7 @@ export const Card: React.FC<{
         {metaImage && typeof metaImage !== 'string' && (
           <Media
             className="flex items-center justify-center"
-            imgClassName="mx-auto"
+            imgClassName="mx-auto max-w-full w-full"
             resource={metaImage}
             size="33vw"
           />
