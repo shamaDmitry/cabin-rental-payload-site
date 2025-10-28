@@ -220,7 +220,7 @@ export interface Page {
       | null;
     media?: (string | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
+  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | LightBoxGallery)[];
   meta?: {
     title?: string | null;
     /**
@@ -832,6 +832,39 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LightBoxGallery".
+ */
+export interface LightBoxGallery {
+  headline: string;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  backgroundImage?: (string | null) | Media;
+  content?:
+    | {
+        title: string;
+        media: string | Media;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'lightBoxGallery';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1124,6 +1157,7 @@ export interface PagesSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
+        lightBoxGallery?: T | LightBoxGallerySelect<T>;
       };
   meta?:
     | T
@@ -1226,6 +1260,24 @@ export interface FormBlockSelect<T extends boolean = true> {
   form?: T;
   enableIntro?: T;
   introContent?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LightBoxGallery_select".
+ */
+export interface LightBoxGallerySelect<T extends boolean = true> {
+  headline?: T;
+  description?: T;
+  backgroundImage?: T;
+  content?:
+    | T
+    | {
+        title?: T;
+        media?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }

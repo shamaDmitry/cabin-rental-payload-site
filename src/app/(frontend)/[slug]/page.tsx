@@ -46,11 +46,11 @@ type Args = {
 export default async function Page({ params: paramsPromise }: Args) {
   const { isEnabled: draft } = await draftMode()
   const { slug = 'home' } = await paramsPromise
- 
+
   // Decode to support slugs with special characters
   const decodedSlug = decodeURIComponent(slug)
   const url = '/' + decodedSlug
-  
+
   let page: RequiredDataFromCollectionSlug<'pages'> | null
 
   page = await queryPageBySlug({
@@ -69,8 +69,10 @@ export default async function Page({ params: paramsPromise }: Args) {
   const { hero, layout } = page
 
   return (
-    <article className="pt-16 pb-24">
+    // <article className="pt-16 pb-24">
+    <>
       <PageClient />
+
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
 
@@ -79,7 +81,8 @@ export default async function Page({ params: paramsPromise }: Args) {
       <RenderHero {...hero} />
 
       <RenderBlocks blocks={layout} />
-    </article>
+    </>
+    // </article>
   )
 }
 
