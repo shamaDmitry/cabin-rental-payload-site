@@ -2,7 +2,6 @@ import type { CollectionConfig } from 'payload'
 
 import { anyone } from '@/access/anyone'
 import { authenticated } from '@/access/authenticated'
-import { slugField } from 'payload'
 
 export const Cabins: CollectionConfig = {
   slug: 'cabins',
@@ -22,19 +21,42 @@ export const Cabins: CollectionConfig = {
       required: true,
     },
     {
+      name: 'image',
+      type: 'upload',
+      relationTo: 'media',
+      required: true,
+    },
+    {
+      name: 'bgImage',
+      type: 'upload',
+      relationTo: 'media',
+      required: true,
+    },
+    {
       name: 'price',
       type: 'number',
       required: true,
     },
     {
-      name: 'details',
-      type: 'relationship',
-      admin: {},
-      hasMany: true,
-      relationTo: 'cabinsDetail',
+      type: 'row',
+      fields: [
+        {
+          name: 'details',
+          type: 'relationship',
+          required: true,
+          admin: {},
+          hasMany: true,
+          relationTo: 'cabinsDetail',
+        },
+        {
+          name: 'amenities',
+          type: 'relationship',
+          required: true,
+          admin: {},
+          hasMany: true,
+          relationTo: 'cabinsAmenity',
+        },
+      ],
     },
-    slugField({
-      position: undefined,
-    }),
   ],
 }

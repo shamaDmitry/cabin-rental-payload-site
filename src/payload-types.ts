@@ -74,6 +74,7 @@ export interface Config {
     users: User;
     cabins: Cabin;
     cabinsDetail: CabinsDetail;
+    cabinsAmenity: CabinsAmenity;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -92,6 +93,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     cabins: CabinsSelect<false> | CabinsSelect<true>;
     cabinsDetail: CabinsDetailSelect<false> | CabinsDetailSelect<true>;
+    cabinsAmenity: CabinsAmenitySelect<false> | CabinsAmenitySelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -224,7 +226,15 @@ export interface Page {
       | null;
     media?: (string | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | LightBoxGallery)[];
+  layout: (
+    | CallToActionBlock
+    | ContentBlock
+    | MediaBlock
+    | ArchiveBlock
+    | FormBlock
+    | LightBoxGallery
+    | RentalSection
+  )[];
   meta?: {
     title?: string | null;
     /**
@@ -869,18 +879,76 @@ export interface LightBoxGallery {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "RentalSection".
+ */
+export interface RentalSection {
+  headline: string;
+  backgroundImage?: (string | null) | Media;
+  cabins: (string | Cabin)[];
+  action: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: string | Page;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: string | Post;
+        } | null);
+    url?: string | null;
+    label: string;
+    /**
+     * Choose how the link should be rendered.
+     */
+    appearance?: ('default' | 'outline') | null;
+    /**
+     * Optional: choose a Lucide icon (the name of the icon exported from `lucide-react`). Leave empty for no icon.
+     */
+    icon?:
+      | (
+          | ''
+          | 'ExternalLink'
+          | 'ArrowRight'
+          | 'ArrowUpRight'
+          | 'Menu'
+          | 'Search'
+          | 'Check'
+          | 'ChevronRight'
+          | 'ChevronLeft'
+          | 'Facebook'
+          | 'Instagram'
+          | 'Linkedin'
+          | 'Twitter'
+          | 'MapPin'
+          | 'Phone'
+          | 'Mail'
+          | 'Calendar'
+          | 'User'
+          | 'Star'
+          | 'Heart'
+        )
+      | null;
+    iconPosition?: ('after' | 'before') | null;
+    iconSize?: ('16' | '20' | '24') | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'rentalSection';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "cabins".
  */
 export interface Cabin {
   id: string;
   title: string;
+  image: string | Media;
+  bgImage: string | Media;
   price: number;
-  details?: (string | CabinsDetail)[] | null;
-  /**
-   * When enabled, the slug will auto-generate from the title field on save and autosave.
-   */
-  generateSlug?: boolean | null;
-  slug: string;
+  details: (string | CabinsDetail)[];
+  amenities: (string | CabinsAmenity)[];
   updatedAt: string;
   createdAt: string;
 }
@@ -890,7 +958,17 @@ export interface Cabin {
  */
 export interface CabinsDetail {
   id: string;
-  detail: string;
+  title: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cabinsAmenity".
+ */
+export interface CabinsAmenity {
+  id: string;
+  title: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -1101,6 +1179,10 @@ export interface PayloadLockedDocument {
         value: string | CabinsDetail;
       } | null)
     | ({
+        relationTo: 'cabinsAmenity';
+        value: string | CabinsAmenity;
+      } | null)
+    | ({
         relationTo: 'redirects';
         value: string | Redirect;
       } | null)
@@ -1202,6 +1284,7 @@ export interface PagesSelect<T extends boolean = true> {
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
         lightBoxGallery?: T | LightBoxGallerySelect<T>;
+        rentalSection?: T | RentalSectionSelect<T>;
       };
   meta?:
     | T
@@ -1321,6 +1404,30 @@ export interface LightBoxGallerySelect<T extends boolean = true> {
         title?: T;
         media?: T;
         id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "RentalSection_select".
+ */
+export interface RentalSectionSelect<T extends boolean = true> {
+  headline?: T;
+  backgroundImage?: T;
+  cabins?: T;
+  action?:
+    | T
+    | {
+        type?: T;
+        newTab?: T;
+        reference?: T;
+        url?: T;
+        label?: T;
+        appearance?: T;
+        icon?: T;
+        iconPosition?: T;
+        iconSize?: T;
       };
   id?: T;
   blockName?: T;
@@ -1498,10 +1605,11 @@ export interface UsersSelect<T extends boolean = true> {
  */
 export interface CabinsSelect<T extends boolean = true> {
   title?: T;
+  image?: T;
+  bgImage?: T;
   price?: T;
   details?: T;
-  generateSlug?: T;
-  slug?: T;
+  amenities?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -1510,7 +1618,16 @@ export interface CabinsSelect<T extends boolean = true> {
  * via the `definition` "cabinsDetail_select".
  */
 export interface CabinsDetailSelect<T extends boolean = true> {
-  detail?: T;
+  title?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cabinsAmenity_select".
+ */
+export interface CabinsAmenitySelect<T extends boolean = true> {
+  title?: T;
   updatedAt?: T;
   createdAt?: T;
 }

@@ -18,6 +18,7 @@ import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
 import { Cabins } from '@/collections/Cabins'
 import { CabinsDetail } from '@/collections/Cabins/CabinsDetail'
+import { CabinsAmenity } from '@/collections/Cabins/CabinsAmenity'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -64,7 +65,7 @@ export default buildConfig({
   db: mongooseAdapter({
     url: process.env.DATABASE_URI || '',
   }),
-  collections: [Pages, Posts, Media, Categories, Users, Cabins, CabinsDetail],
+  collections: [Pages, Posts, Media, Categories, Users, Cabins, CabinsDetail, CabinsAmenity],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
   plugins: [

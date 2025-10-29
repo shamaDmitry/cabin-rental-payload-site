@@ -48,6 +48,7 @@ export const LightBoxGallery: Block = {
           required: true,
         },
       ],
+      minRows: 3,
       maxRows: 6,
       admin: {
         initCollapsed: true,

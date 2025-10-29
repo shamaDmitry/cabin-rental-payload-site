@@ -8,8 +8,6 @@ import { CMSLink } from '@/components/Link'
 export const CallToActionBlock: React.FC<CTABlockProps> = (props) => {
   const { links, richText } = props
 
-  console.log('CallToActionBlock', props)
-
   return (
     <div className="container">
       <div className="bg-card rounded border-border border p-4 flex flex-col gap-8 md:flex-row md:justify-between md:items-center">

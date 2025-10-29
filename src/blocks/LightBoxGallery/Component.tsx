@@ -23,7 +23,7 @@ export const LightBoxGallery: React.FC<
   return (
     <>
       <section
-        id={`block-${id}`}
+        id={`light-box-gallery-${id}`}
         className="text-center py-20"
         style={{
           background: `url('${imageUrl}') 10.31% 73.54% / cover no-repeat, rgb(243, 243, 242)`,
