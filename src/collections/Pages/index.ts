@@ -29,6 +29,7 @@ import { ActivitiesSection } from '@/blocks/ActivitiesSection/config'
 import { CtaSection } from '@/blocks/CtaSection/config'
 import { FacilitiesSection } from '@/blocks/FacilitiesSection/config'
 import { CafeSection } from '@/blocks/CafeSection/config'
+import { TestimonialSection } from '@/blocks/TestimonialSection/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -93,6 +94,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 CtaSection,
                 FacilitiesSection,
                 CafeSection,
+                TestimonialSection,
               ],
               required: true,
               admin: {

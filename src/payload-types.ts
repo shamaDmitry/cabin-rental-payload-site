@@ -247,6 +247,7 @@ export interface Page {
     | CtaSection
     | FacilitiesSection
     | CafeSection
+    | TestimonialSection
   )[];
   meta?: {
     title?: string | null;
@@ -1146,6 +1147,73 @@ export interface CafeCard {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TestimonialSection".
+ */
+export interface TestimonialSection {
+  headline: string;
+  images: {
+    image?: (string | null) | Media;
+    id?: string | null;
+  }[];
+  link: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: string | Page;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: string | Post;
+        } | null);
+    url?: string | null;
+    label?: string | null;
+    /**
+     * Choose how the link should be rendered.
+     */
+    appearance?: ('default' | 'outline' | 'destructive' | 'ghost' | 'link' | 'secondary') | null;
+    /**
+     * Size of link/button. Note: "clean" size have no height/padding and are intended for use within text or custom-styled areas.
+     */
+    size: 'icon_xs' | 'clean' | 'icon' | 'default' | 'sm' | 'lg' | 'xl' | '2xl';
+    radius?: ('full' | 'default' | 'sm' | 'lg' | 'xl' | '2xl') | null;
+    /**
+     * Optional: choose a Lucide icon (the name of the icon exported from `lucide-react`). Leave empty for no icon.
+     */
+    icon?:
+      | (
+          | ''
+          | 'ExternalLink'
+          | 'ArrowRight'
+          | 'ArrowUpRight'
+          | 'Menu'
+          | 'Search'
+          | 'Check'
+          | 'ChevronRight'
+          | 'ChevronLeft'
+          | 'Facebook'
+          | 'Instagram'
+          | 'Linkedin'
+          | 'Twitter'
+          | 'MapPin'
+          | 'Phone'
+          | 'Mail'
+          | 'Calendar'
+          | 'User'
+          | 'Star'
+          | 'Heart'
+        )
+      | null;
+    iconPosition?: ('after' | 'before') | null;
+    iconSize?: ('16' | '20' | '24') | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'testimonialSection';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1471,6 +1539,7 @@ export interface PagesSelect<T extends boolean = true> {
         ctaSection?: T | CtaSectionSelect<T>;
         facilitiesSection?: T | FacilitiesSectionSelect<T>;
         cafeSection?: T | CafeSectionSelect<T>;
+        testimonialSection?: T | TestimonialSectionSelect<T>;
       };
   meta?:
     | T
@@ -1684,6 +1753,36 @@ export interface CafeSectionSelect<T extends boolean = true> {
   description?: T;
   backgroundImage?: T;
   cards?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TestimonialSection_select".
+ */
+export interface TestimonialSectionSelect<T extends boolean = true> {
+  headline?: T;
+  images?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
+  link?:
+    | T
+    | {
+        type?: T;
+        newTab?: T;
+        reference?: T;
+        url?: T;
+        label?: T;
+        appearance?: T;
+        size?: T;
+        radius?: T;
+        icon?: T;
+        iconPosition?: T;
+        iconSize?: T;
+      };
   id?: T;
   blockName?: T;
 }
