@@ -12,6 +12,7 @@ import { Providers } from '@/providers'
 import { InitTheme } from '@/providers/Theme/InitTheme'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import { draftMode } from 'next/headers'
+import NextTopLoader from 'nextjs-toploader'
 
 // import './globals.css'
 import '@/styles/globals.css'
@@ -29,6 +30,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </head>
 
       <body className="min-h-screen flex flex-col">
+        <NextTopLoader />
+
         <Providers>
           <AdminBar
             adminBarProps={{
