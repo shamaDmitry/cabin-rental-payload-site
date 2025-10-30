@@ -75,6 +75,8 @@ export interface Config {
     cabins: Cabin;
     cabinsDetail: CabinsDetail;
     cabinsAmenity: CabinsAmenity;
+    activities: Activity;
+    cafeCard: CafeCard;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -94,6 +96,8 @@ export interface Config {
     cabins: CabinsSelect<false> | CabinsSelect<true>;
     cabinsDetail: CabinsDetailSelect<false> | CabinsDetailSelect<true>;
     cabinsAmenity: CabinsAmenitySelect<false> | CabinsAmenitySelect<true>;
+    activities: ActivitiesSelect<false> | ActivitiesSelect<true>;
+    cafeCard: CafeCardSelect<false> | CafeCardSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -186,11 +190,16 @@ export interface Page {
                   value: string | Post;
                 } | null);
             url?: string | null;
-            label: string;
+            label?: string | null;
             /**
              * Choose how the link should be rendered.
              */
-            appearance?: ('default' | 'outline') | null;
+            appearance?: ('default' | 'outline' | 'destructive' | 'ghost' | 'link' | 'secondary') | null;
+            /**
+             * Size of link/button. Note: "clean" size have no height/padding and are intended for use within text or custom-styled areas.
+             */
+            size: 'icon_xs' | 'clean' | 'icon' | 'default' | 'sm' | 'lg' | 'xl' | '2xl';
+            radius?: ('full' | 'default' | 'sm' | 'lg' | 'xl' | '2xl') | null;
             /**
              * Optional: choose a Lucide icon (the name of the icon exported from `lucide-react`). Leave empty for no icon.
              */
@@ -234,6 +243,10 @@ export interface Page {
     | FormBlock
     | LightBoxGallery
     | RentalSection
+    | ActivitiesSection
+    | CtaSection
+    | FacilitiesSection
+    | CafeSection
   )[];
   meta?: {
     title?: string | null;
@@ -479,11 +492,16 @@ export interface CallToActionBlock {
                 value: string | Post;
               } | null);
           url?: string | null;
-          label: string;
+          label?: string | null;
           /**
            * Choose how the link should be rendered.
            */
           appearance?: ('default' | 'outline') | null;
+          /**
+           * Size of link/button. Note: "clean" size have no height/padding and are intended for use within text or custom-styled areas.
+           */
+          size: 'icon_xs' | 'clean' | 'icon' | 'default' | 'sm' | 'lg' | 'xl' | '2xl';
+          radius?: ('full' | 'default' | 'sm' | 'lg' | 'xl' | '2xl') | null;
           /**
            * Optional: choose a Lucide icon (the name of the icon exported from `lucide-react`). Leave empty for no icon.
            */
@@ -558,11 +576,16 @@ export interface ContentBlock {
                 value: string | Post;
               } | null);
           url?: string | null;
-          label: string;
+          label?: string | null;
           /**
            * Choose how the link should be rendered.
            */
-          appearance?: ('default' | 'outline') | null;
+          appearance?: ('default' | 'outline' | 'destructive' | 'ghost' | 'link' | 'secondary') | null;
+          /**
+           * Size of link/button. Note: "clean" size have no height/padding and are intended for use within text or custom-styled areas.
+           */
+          size: 'icon_xs' | 'clean' | 'icon' | 'default' | 'sm' | 'lg' | 'xl' | '2xl';
+          radius?: ('full' | 'default' | 'sm' | 'lg' | 'xl' | '2xl') | null;
           /**
            * Optional: choose a Lucide icon (the name of the icon exported from `lucide-react`). Leave empty for no icon.
            */
@@ -898,11 +921,16 @@ export interface RentalSection {
           value: string | Post;
         } | null);
     url?: string | null;
-    label: string;
+    label?: string | null;
     /**
      * Choose how the link should be rendered.
      */
-    appearance?: ('default' | 'outline') | null;
+    appearance?: ('default' | 'outline' | 'destructive' | 'ghost' | 'link' | 'secondary') | null;
+    /**
+     * Size of link/button. Note: "clean" size have no height/padding and are intended for use within text or custom-styled areas.
+     */
+    size: 'icon_xs' | 'clean' | 'icon' | 'default' | 'sm' | 'lg' | 'xl' | '2xl';
+    radius?: ('full' | 'default' | 'sm' | 'lg' | 'xl' | '2xl') | null;
     /**
      * Optional: choose a Lucide icon (the name of the icon exported from `lucide-react`). Leave empty for no icon.
      */
@@ -969,6 +997,150 @@ export interface CabinsDetail {
 export interface CabinsAmenity {
   id: string;
   title: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ActivitiesSection".
+ */
+export interface ActivitiesSection {
+  headline: string;
+  backgroundImage?: (string | null) | Media;
+  activities: (string | Activity)[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'activitiesSection';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "activities".
+ */
+export interface Activity {
+  id: string;
+  title: string;
+  price: number;
+  description: string;
+  image: string | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CtaSection".
+ */
+export interface CtaSection {
+  title: string;
+  bgImage: string | Media;
+  links?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: string | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: string | Post;
+              } | null);
+          url?: string | null;
+          label?: string | null;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline' | 'destructive' | 'ghost' | 'link' | 'secondary') | null;
+          /**
+           * Size of link/button. Note: "clean" size have no height/padding and are intended for use within text or custom-styled areas.
+           */
+          size: 'icon_xs' | 'clean' | 'icon' | 'default' | 'sm' | 'lg' | 'xl' | '2xl';
+          radius?: ('full' | 'default' | 'sm' | 'lg' | 'xl' | '2xl') | null;
+          /**
+           * Optional: choose a Lucide icon (the name of the icon exported from `lucide-react`). Leave empty for no icon.
+           */
+          icon?:
+            | (
+                | ''
+                | 'ExternalLink'
+                | 'ArrowRight'
+                | 'ArrowUpRight'
+                | 'Menu'
+                | 'Search'
+                | 'Check'
+                | 'ChevronRight'
+                | 'ChevronLeft'
+                | 'Facebook'
+                | 'Instagram'
+                | 'Linkedin'
+                | 'Twitter'
+                | 'MapPin'
+                | 'Phone'
+                | 'Mail'
+                | 'Calendar'
+                | 'User'
+                | 'Star'
+                | 'Heart'
+              )
+            | null;
+          iconPosition?: ('after' | 'before') | null;
+          iconSize?: ('16' | '20' | '24') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'ctaSection';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FacilitiesSection".
+ */
+export interface FacilitiesSection {
+  headline: string;
+  image?: (string | null) | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'facilitiesSection';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CafeSection".
+ */
+export interface CafeSection {
+  headline: string;
+  description: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  backgroundImage?: (string | null) | Media;
+  cards: (string | CafeCard)[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'cafeSection';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cafeCard".
+ */
+export interface CafeCard {
+  id: string;
+  headline: string;
+  description: string;
+  image: string | Media;
   updatedAt: string;
   createdAt: string;
 }
@@ -1183,6 +1355,14 @@ export interface PayloadLockedDocument {
         value: string | CabinsAmenity;
       } | null)
     | ({
+        relationTo: 'activities';
+        value: string | Activity;
+      } | null)
+    | ({
+        relationTo: 'cafeCard';
+        value: string | CafeCard;
+      } | null)
+    | ({
         relationTo: 'redirects';
         value: string | Redirect;
       } | null)
@@ -1267,6 +1447,8 @@ export interface PagesSelect<T extends boolean = true> {
                     url?: T;
                     label?: T;
                     appearance?: T;
+                    size?: T;
+                    radius?: T;
                     icon?: T;
                     iconPosition?: T;
                     iconSize?: T;
@@ -1285,6 +1467,10 @@ export interface PagesSelect<T extends boolean = true> {
         formBlock?: T | FormBlockSelect<T>;
         lightBoxGallery?: T | LightBoxGallerySelect<T>;
         rentalSection?: T | RentalSectionSelect<T>;
+        activitiesSection?: T | ActivitiesSectionSelect<T>;
+        ctaSection?: T | CtaSectionSelect<T>;
+        facilitiesSection?: T | FacilitiesSectionSelect<T>;
+        cafeSection?: T | CafeSectionSelect<T>;
       };
   meta?:
     | T
@@ -1318,6 +1504,8 @@ export interface CallToActionBlockSelect<T extends boolean = true> {
               url?: T;
               label?: T;
               appearance?: T;
+              size?: T;
+              radius?: T;
               icon?: T;
               iconPosition?: T;
               iconSize?: T;
@@ -1347,6 +1535,8 @@ export interface ContentBlockSelect<T extends boolean = true> {
               url?: T;
               label?: T;
               appearance?: T;
+              size?: T;
+              radius?: T;
               icon?: T;
               iconPosition?: T;
               iconSize?: T;
@@ -1425,10 +1615,75 @@ export interface RentalSectionSelect<T extends boolean = true> {
         url?: T;
         label?: T;
         appearance?: T;
+        size?: T;
+        radius?: T;
         icon?: T;
         iconPosition?: T;
         iconSize?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ActivitiesSection_select".
+ */
+export interface ActivitiesSectionSelect<T extends boolean = true> {
+  headline?: T;
+  backgroundImage?: T;
+  activities?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CtaSection_select".
+ */
+export interface CtaSectionSelect<T extends boolean = true> {
+  title?: T;
+  bgImage?: T;
+  links?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+              size?: T;
+              radius?: T;
+              icon?: T;
+              iconPosition?: T;
+              iconSize?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FacilitiesSection_select".
+ */
+export interface FacilitiesSectionSelect<T extends boolean = true> {
+  headline?: T;
+  image?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CafeSection_select".
+ */
+export interface CafeSectionSelect<T extends boolean = true> {
+  headline?: T;
+  description?: T;
+  backgroundImage?: T;
+  cards?: T;
   id?: T;
   blockName?: T;
 }
@@ -1628,6 +1883,29 @@ export interface CabinsDetailSelect<T extends boolean = true> {
  */
 export interface CabinsAmenitySelect<T extends boolean = true> {
   title?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "activities_select".
+ */
+export interface ActivitiesSelect<T extends boolean = true> {
+  title?: T;
+  price?: T;
+  description?: T;
+  image?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cafeCard_select".
+ */
+export interface CafeCardSelect<T extends boolean = true> {
+  headline?: T;
+  description?: T;
+  image?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -1894,7 +2172,7 @@ export interface Header {
   id: string;
   navItems?:
     | {
-        link: {
+        link?: {
           type?: ('reference' | 'custom') | null;
           newTab?: boolean | null;
           reference?:
@@ -1907,36 +2185,7 @@ export interface Header {
                 value: string | Post;
               } | null);
           url?: string | null;
-          label: string;
-          /**
-           * Optional: choose a Lucide icon (the name of the icon exported from `lucide-react`). Leave empty for no icon.
-           */
-          icon?:
-            | (
-                | ''
-                | 'ExternalLink'
-                | 'ArrowRight'
-                | 'ArrowUpRight'
-                | 'Menu'
-                | 'Search'
-                | 'Check'
-                | 'ChevronRight'
-                | 'ChevronLeft'
-                | 'Facebook'
-                | 'Instagram'
-                | 'Linkedin'
-                | 'Twitter'
-                | 'MapPin'
-                | 'Phone'
-                | 'Mail'
-                | 'Calendar'
-                | 'User'
-                | 'Star'
-                | 'Heart'
-              )
-            | null;
-          iconPosition?: ('after' | 'before') | null;
-          iconSize?: ('16' | '20' | '24') | null;
+          label?: string | null;
         };
         id?: string | null;
       }[]
@@ -1952,7 +2201,7 @@ export interface Footer {
   id: string;
   navItems?:
     | {
-        link: {
+        link?: {
           type?: ('reference' | 'custom') | null;
           newTab?: boolean | null;
           reference?:
@@ -1965,36 +2214,7 @@ export interface Footer {
                 value: string | Post;
               } | null);
           url?: string | null;
-          label: string;
-          /**
-           * Optional: choose a Lucide icon (the name of the icon exported from `lucide-react`). Leave empty for no icon.
-           */
-          icon?:
-            | (
-                | ''
-                | 'ExternalLink'
-                | 'ArrowRight'
-                | 'ArrowUpRight'
-                | 'Menu'
-                | 'Search'
-                | 'Check'
-                | 'ChevronRight'
-                | 'ChevronLeft'
-                | 'Facebook'
-                | 'Instagram'
-                | 'Linkedin'
-                | 'Twitter'
-                | 'MapPin'
-                | 'Phone'
-                | 'Mail'
-                | 'Calendar'
-                | 'User'
-                | 'Star'
-                | 'Heart'
-              )
-            | null;
-          iconPosition?: ('after' | 'before') | null;
-          iconSize?: ('16' | '20' | '24') | null;
+          label?: string | null;
         };
         id?: string | null;
       }[]
@@ -2014,7 +2234,16 @@ export interface Footer {
                 value: string | Post;
               } | null);
           url?: string | null;
-          label: string;
+          label?: string | null;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline' | 'destructive' | 'ghost' | 'link' | 'secondary') | null;
+          /**
+           * Size of link/button. Note: "clean" size have no height/padding and are intended for use within text or custom-styled areas.
+           */
+          size: 'icon_xs' | 'clean' | 'icon' | 'default' | 'sm' | 'lg' | 'xl' | '2xl';
+          radius?: ('full' | 'default' | 'sm' | 'lg' | 'xl' | '2xl') | null;
           /**
            * Optional: choose a Lucide icon (the name of the icon exported from `lucide-react`). Leave empty for no icon.
            */
@@ -2067,9 +2296,6 @@ export interface HeaderSelect<T extends boolean = true> {
               reference?: T;
               url?: T;
               label?: T;
-              icon?: T;
-              iconPosition?: T;
-              iconSize?: T;
             };
         id?: T;
       };
@@ -2093,9 +2319,6 @@ export interface FooterSelect<T extends boolean = true> {
               reference?: T;
               url?: T;
               label?: T;
-              icon?: T;
-              iconPosition?: T;
-              iconSize?: T;
             };
         id?: T;
       };
@@ -2110,6 +2333,9 @@ export interface FooterSelect<T extends boolean = true> {
               reference?: T;
               url?: T;
               label?: T;
+              appearance?: T;
+              size?: T;
+              radius?: T;
               icon?: T;
               iconPosition?: T;
               iconSize?: T;

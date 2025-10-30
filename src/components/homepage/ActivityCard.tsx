@@ -22,13 +22,21 @@ const ActivityCard: FC<ActivityCardProps> = ({ className, title, price, descript
 
   return (
     <Card className={cn('p-5', className)}>
-      <Image src={imageUrl} alt={title} width={1200} height={200} className="w-full rounded-xl" />
+      <Image
+        src={imageUrl}
+        alt={title}
+        width={1200}
+        height={200}
+        className="w-full rounded-xl mb-4"
+      />
 
-      <Headline as="h5">{title}</Headline>
+      <Headline level={3} className="mb-2">
+        {title}
+      </Headline>
 
-      <div className="text-primary font-medium text-xl">${price}/hour</div>
+      <div className="text-primary font-medium text-xl mb-2">${price}/hour</div>
 
-      <p>{description}</p>
+      <p className="text-card-foreground/60"> {description}</p>
     </Card>
   )
 }

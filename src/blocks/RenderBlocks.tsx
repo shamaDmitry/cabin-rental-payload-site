@@ -9,6 +9,10 @@ import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { LightBoxGallery } from '@/blocks/LightBoxGallery/Component'
 import { RentalSection } from '@/blocks/RentalSection/Component'
+import { ActivitiesSection } from '@/blocks/ActivitiesSection/Component'
+import { CtaSection } from '@/blocks/CtaSection/Component'
+import { FacilitiesSection } from '@/blocks/FacilitiesSection/Component'
+import { CafeSection } from '@/blocks/CafeSection/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -18,6 +22,10 @@ const blockComponents = {
   mediaBlock: MediaBlock,
   lightBoxGallery: LightBoxGallery,
   rentalSection: RentalSection,
+  activitiesSection: ActivitiesSection,
+  ctaSection: CtaSection,
+  facilitiesSection: FacilitiesSection,
+  cafeSection: CafeSection,
 }
 
 export const RenderBlocks: React.FC<{

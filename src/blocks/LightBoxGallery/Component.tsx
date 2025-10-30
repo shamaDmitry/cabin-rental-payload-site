@@ -30,7 +30,7 @@ export const LightBoxGallery: React.FC<
         }}
       >
         <Container className="max-w-5xl">
-          <Headline as="h2" className="mb-5">
+          <Headline level={2} className="mb-5">
             {headline}
           </Headline>
 

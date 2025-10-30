@@ -25,6 +25,10 @@ import { FormBlock } from '@/blocks/Form/config'
 import { MediaBlock } from '@/blocks/MediaBlock/config'
 import { LightBoxGallery } from '@/blocks/LightBoxGallery/config'
 import { RentalSection } from '@/blocks/RentalSection/config'
+import { ActivitiesSection } from '@/blocks/ActivitiesSection/config'
+import { CtaSection } from '@/blocks/CtaSection/config'
+import { FacilitiesSection } from '@/blocks/FacilitiesSection/config'
+import { CafeSection } from '@/blocks/CafeSection/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -85,6 +89,10 @@ export const Pages: CollectionConfig<'pages'> = {
                 FormBlock,
                 LightBoxGallery,
                 RentalSection,
+                ActivitiesSection,
+                CtaSection,
+                FacilitiesSection,
+                CafeSection,
               ],
               required: true,
               admin: {

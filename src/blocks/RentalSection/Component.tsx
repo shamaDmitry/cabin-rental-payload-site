@@ -3,8 +3,6 @@ import type { Cabin, RentalSection as RentalSectionProps } from '@/payload-types
 import React from 'react'
 import Headline from '@/components/core/Headline'
 import Container from '@/components/core/Container'
-import Link from 'next/link'
-import { Button } from '@/components/ui/button'
 import RentalCard from '@/components/homepage/RentalCard'
 import { CMSLink } from '@/components/Link'
 
@@ -14,10 +12,7 @@ export const RentalSection: React.FC<
   }
 > = (props) => {
   const { cabins, headline, action } = props
-
-  const data: Cabin[] = cabins as Cabin[]
-
-  console.log('action', action)
+  const data: Cabin[] = (cabins as Cabin[]) || []
 
   return (
     <>
@@ -28,11 +23,13 @@ export const RentalSection: React.FC<
         }}
       >
         <Container className="text-center text-card">
-          <Headline className="mb-12">{headline}</Headline>
+          <Headline level={2} className="mb-12">
+            {headline}
+          </Headline>
 
-          {!data && <p className="mb-12">No cabins available</p>}
+          {!data.length && <p className="mb-12">No cabins available</p>}
 
-          {data && (
+          {data.length > 0 && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 mb-12">
               {data.map((cabin) => {
                 return (
@@ -53,24 +50,7 @@ export const RentalSection: React.FC<
             </div>
           )}
 
-          <CMSLink
-            {...action}
-            appearance="outline"
-            className="bg-transparent rounded-full text-background border-background hover:bg-background hover:text-foreground"
-            // size="xl"
-            // appearance="outline"
-            // className="bg-transparent rounded-full text-background border-background hover:bg-background hover:text-foreground"
-          />
-
-          <Link href={'/accommodation'}>
-            <Button
-              size={'xl'}
-              variant="outline"
-              className="bg-transparent rounded-full text-background border-background hover:bg-background hover:text-foreground"
-            >
-              See all cabins
-            </Button>
-          </Link>
+          {data.length > 0 && <CMSLink {...action} />}
         </Container>
       </section>
     </>

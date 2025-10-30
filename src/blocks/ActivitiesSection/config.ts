@@ -1,9 +1,9 @@
 import { link } from '@/fields/link'
 import type { Block } from 'payload'
 
-export const RentalSection: Block = {
-  slug: 'rentalSection',
-  interfaceName: 'RentalSection',
+export const ActivitiesSection: Block = {
+  slug: 'activitiesSection',
+  interfaceName: 'ActivitiesSection',
   fields: [
     {
       name: 'headline',
@@ -18,19 +18,13 @@ export const RentalSection: Block = {
       label: 'Background Image',
     },
     {
-      name: 'cabins',
+      name: 'activities',
       type: 'relationship',
       required: true,
       admin: {},
       hasMany: true,
-      relationTo: 'cabins',
-      minRows: 2,
-      maxRows: 4,
+      relationTo: 'activities',
+      minRows: 3,
     },
-    link({
-      overrides: {
-        name: 'action',
-      },
-    }),
   ],
 }

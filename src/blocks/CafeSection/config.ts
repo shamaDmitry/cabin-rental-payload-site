@@ -1,9 +1,8 @@
-import { link } from '@/fields/link'
 import type { Block } from 'payload'
 
-export const RentalSection: Block = {
-  slug: 'rentalSection',
-  interfaceName: 'RentalSection',
+export const CafeSection: Block = {
+  slug: 'cafeSection',
+  interfaceName: 'CafeSection',
   fields: [
     {
       name: 'headline',
@@ -12,25 +11,25 @@ export const RentalSection: Block = {
       label: 'Headline',
     },
     {
+      name: 'description',
+      type: 'richText',
+      required: true,
+      label: 'Description',
+    },
+    {
       name: 'backgroundImage',
       type: 'upload',
       relationTo: 'media',
       label: 'Background Image',
     },
     {
-      name: 'cabins',
+      name: 'cards',
       type: 'relationship',
       required: true,
       admin: {},
       hasMany: true,
-      relationTo: 'cabins',
+      relationTo: 'cafeCard',
       minRows: 2,
-      maxRows: 4,
     },
-    link({
-      overrides: {
-        name: 'action',
-      },
-    }),
   ],
 }

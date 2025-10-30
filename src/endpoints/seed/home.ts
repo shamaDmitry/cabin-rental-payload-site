@@ -18,6 +18,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
       links: [
         {
           link: {
+            size: 'default',
             type: 'custom',
             appearance: 'default',
             label: 'All posts',
@@ -26,6 +27,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
         },
         {
           link: {
+            size: 'default',
             type: 'custom',
             appearance: 'outline',
             label: 'Contact',
@@ -575,6 +577,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
         links: [
           {
             link: {
+              size: 'default',
               type: 'custom',
               appearance: 'default',
               label: 'All posts',

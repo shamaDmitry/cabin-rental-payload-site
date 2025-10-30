@@ -42,18 +42,9 @@ export async function Footer() {
                 Follow Us
               </Headline>
 
-              <div className="flex flex-wrap justify-end gap-4">
+              <div className="flex flex-wrap items-center justify-end gap-4">
                 {socialItems.map(({ link }, i) => {
-                  return (
-                    <CMSLink
-                      size="icon"
-                      className="bg-secondary rounded-full size-8 flex items-center justify-center text-background hover:bg-primary transition-colors"
-                      key={i}
-                      {...link}
-                      label={null}
-                      iconSize={link.iconSize}
-                    />
-                  )
+                  return <CMSLink key={i} {...link} label={null} iconSize={link.iconSize} />
                 })}
               </div>
             </div>

@@ -28,11 +28,12 @@ export const Footer: GlobalConfig = {
     {
       name: 'socialLinks',
       type: 'array',
-      fields: [
-        link({
-          appearances: false,
-        }),
-      ],
+      fields: [link()],
+      admin: {
+        components: {
+          RowLabel: '@/Footer/RowLabel#RowLabel',
+        },
+      },
     },
   ],
   hooks: {

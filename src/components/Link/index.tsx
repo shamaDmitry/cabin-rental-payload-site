@@ -21,6 +21,7 @@ type CMSLinkType = {
     value: Page | Post | string | number
   } | null
   size?: ButtonProps['size'] | null
+  radius?: ButtonProps['radius'] | null
   type?: 'custom' | 'reference' | null
   url?: string | null
 }
@@ -37,7 +38,8 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
     iconSize,
     newTab,
     reference,
-    size: sizeFromProps,
+    size = 'default',
+    radius = 'default',
     url,
   } = props
 
@@ -50,7 +52,7 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
 
   if (!href) return null
 
-  const size = appearance === 'link' ? 'clear' : sizeFromProps
+  // const size = appearance === 'link' ? 'clear' : sizeFromProps
   const newTabProps = newTab ? { rel: 'noopener noreferrer', target: '_blank' } : {}
 
   /* Ensure we don't break any styles set by richText */
@@ -76,7 +78,7 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
   }
 
   return (
-    <Button asChild className={className} size={size} variant={appearance}>
+    <Button asChild className={className} size={size} variant={appearance} radius={radius}>
       <Link className={cn(className)} href={href || url || ''} {...newTabProps}>
         {(() => {
           const Icon = icon
