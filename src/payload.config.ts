@@ -21,6 +21,7 @@ import { CabinsDetail } from '@/collections/Cabins/CabinsDetail'
 import { CabinsAmenity } from '@/collections/Cabins/CabinsAmenity'
 import { Activities } from '@/collections/Activities'
 import { CafeCard } from '@/collections/CafeCard'
+import { resendAdapter } from '@payloadcms/email-resend'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -105,4 +106,9 @@ export default buildConfig({
     },
     tasks: [],
   },
+  email: resendAdapter({
+    defaultFromAddress: 'dev@payloadcms.com',
+    defaultFromName: 'Payload CMS',
+    apiKey: process.env.RESEND_API_KEY || '',
+  }),
 })

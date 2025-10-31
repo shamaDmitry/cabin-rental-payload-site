@@ -12,6 +12,12 @@ export const TestimonialSection: Block = {
       label: 'Headline',
     },
     {
+      name: 'bgImage',
+      type: 'upload',
+      relationTo: 'media',
+      label: 'Background image',
+    },
+    {
       name: 'images',
       type: 'array',
       required: true,

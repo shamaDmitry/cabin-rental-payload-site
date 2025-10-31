@@ -248,6 +248,8 @@ export interface Page {
     | FacilitiesSection
     | CafeSection
     | TestimonialSection
+    | HomeHero
+    | ReservationSection
   )[];
   meta?: {
     title?: string | null;
@@ -765,6 +767,27 @@ export interface Form {
             name: string;
             label?: string | null;
             width?: number | null;
+            basePrice?: number | null;
+            priceConditions?:
+              | {
+                  fieldToUse?: string | null;
+                  condition?: ('hasValue' | 'equals' | 'notEquals') | null;
+                  valueForCondition?: string | null;
+                  operator?: ('add' | 'subtract' | 'multiply' | 'divide') | null;
+                  valueType?: ('static' | 'valueOfField') | null;
+                  valueForOperator?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            required?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'payment';
+          }
+        | {
+            name: string;
+            label?: string | null;
+            width?: number | null;
             defaultValue?: string | null;
             placeholder?: string | null;
             options?:
@@ -1151,6 +1174,7 @@ export interface CafeCard {
  */
 export interface TestimonialSection {
   headline: string;
+  bgImage?: (string | null) | Media;
   images: {
     image?: (string | null) | Media;
     id?: string | null;
@@ -1214,6 +1238,44 @@ export interface TestimonialSection {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HomeHero".
+ */
+export interface HomeHero {
+  bgImage: string | Media;
+  form: string | Form;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'homeHero';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ReservationSection".
+ */
+export interface ReservationSection {
+  headline: string;
+  backgroundImage?: (string | null) | Media;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  form: string | Form;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'reservationSection';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1252,6 +1314,20 @@ export interface FormSubmission {
         id?: string | null;
       }[]
     | null;
+  payment?: {
+    field?: string | null;
+    status?: string | null;
+    /**
+     * Amount in cents
+     */
+    amount?: number | null;
+    paymentProcessor?: string | null;
+    creditCard?: {
+      token?: string | null;
+      brand?: string | null;
+      number?: string | null;
+    };
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -1540,6 +1616,8 @@ export interface PagesSelect<T extends boolean = true> {
         facilitiesSection?: T | FacilitiesSectionSelect<T>;
         cafeSection?: T | CafeSectionSelect<T>;
         testimonialSection?: T | TestimonialSectionSelect<T>;
+        homeHero?: T | HomeHeroSelect<T>;
+        reservationSection?: T | ReservationSectionSelect<T>;
       };
   meta?:
     | T
@@ -1762,6 +1840,7 @@ export interface CafeSectionSelect<T extends boolean = true> {
  */
 export interface TestimonialSectionSelect<T extends boolean = true> {
   headline?: T;
+  bgImage?: T;
   images?:
     | T
     | {
@@ -1783,6 +1862,28 @@ export interface TestimonialSectionSelect<T extends boolean = true> {
         iconPosition?: T;
         iconSize?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HomeHero_select".
+ */
+export interface HomeHeroSelect<T extends boolean = true> {
+  bgImage?: T;
+  form?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ReservationSection_select".
+ */
+export interface ReservationSectionSelect<T extends boolean = true> {
+  headline?: T;
+  backgroundImage?: T;
+  description?: T;
+  form?: T;
   id?: T;
   blockName?: T;
 }
@@ -2082,6 +2183,28 @@ export interface FormsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        payment?:
+          | T
+          | {
+              name?: T;
+              label?: T;
+              width?: T;
+              basePrice?: T;
+              priceConditions?:
+                | T
+                | {
+                    fieldToUse?: T;
+                    condition?: T;
+                    valueForCondition?: T;
+                    operator?: T;
+                    valueType?: T;
+                    valueForOperator?: T;
+                    id?: T;
+                  };
+              required?: T;
+              id?: T;
+              blockName?: T;
+            };
         select?:
           | T
           | {
@@ -2169,6 +2292,21 @@ export interface FormSubmissionsSelect<T extends boolean = true> {
         field?: T;
         value?: T;
         id?: T;
+      };
+  payment?:
+    | T
+    | {
+        field?: T;
+        status?: T;
+        amount?: T;
+        paymentProcessor?: T;
+        creditCard?:
+          | T
+          | {
+              token?: T;
+              brand?: T;
+              number?: T;
+            };
       };
   updatedAt?: T;
   createdAt?: T;

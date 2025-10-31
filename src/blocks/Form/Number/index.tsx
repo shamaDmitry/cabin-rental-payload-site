@@ -24,10 +24,12 @@ export const Number: React.FC<
           </span>
         )}
       </Label>
+
       <Input
         defaultValue={defaultValue}
         id={name}
         type="number"
+        placeholder={label}
         {...register(name, { required })}
       />
       {errors[name] && <Error name={name} />}

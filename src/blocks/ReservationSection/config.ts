@@ -1,8 +1,8 @@
 import type { Block } from 'payload'
 
-export const ActivitiesSection: Block = {
-  slug: 'activitiesSection',
-  interfaceName: 'ActivitiesSection',
+export const ReservationSection: Block = {
+  slug: 'reservationSection',
+  interfaceName: 'ReservationSection',
   fields: [
     {
       name: 'headline',
@@ -17,13 +17,17 @@ export const ActivitiesSection: Block = {
       label: 'Background Image',
     },
     {
-      name: 'activities',
+      name: 'description',
+      type: 'richText',
+    },
+    {
+      name: 'form',
       type: 'relationship',
+      relationTo: 'forms',
       required: true,
-      admin: {},
-      hasMany: true,
-      relationTo: 'activities',
-      minRows: 3,
+      admin: {
+        position: 'sidebar',
+      },
     },
   ],
 }
