@@ -41,8 +41,6 @@ export const Datepicker: React.FC<
         render={({ field: { onChange, value } }) => {
           const controlledValue = stateOptions.find((t) => t.value === value)
 
-          console.log('controlledValue', controlledValue)
-
           return (
             <>
               <Popover>

@@ -35,6 +35,7 @@ import { ReservationSection } from '@/blocks/ReservationSection/config'
 import { ContentSection } from '@/blocks/ContentSection/config'
 
 export const Pages: CollectionConfig<'pages'> = {
+  defaultSort: '-updatedAt',
   slug: 'pages',
   access: {
     create: authenticated,

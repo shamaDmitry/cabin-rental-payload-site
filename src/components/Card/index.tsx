@@ -39,10 +39,12 @@ export const Card: React.FC<{
     >
       <div className="relative w-full ">
         {!metaImage && <div className="">No image</div>}
+
         {metaImage && typeof metaImage !== 'string' && (
           <Media
             className="flex items-center justify-center"
-            imgClassName="mx-auto max-w-full w-full"
+            pictureClassName="w-full"
+            imgClassName="mx-auto max-w-full w-full max-h-[200px] object-cover"
             resource={metaImage}
             size="33vw"
           />

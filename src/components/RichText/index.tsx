@@ -3,6 +3,7 @@ import {
   DefaultNodeTypes,
   SerializedBlockNode,
   SerializedLinkNode,
+  SerializedInlineBlockNode,
   type DefaultTypedEditorState,
 } from '@payloadcms/richtext-lexical'
 import {
@@ -15,16 +16,22 @@ import { CodeBlock, CodeBlockProps } from '@/blocks/Code/Component'
 
 import type {
   BannerBlock as BannerBlockProps,
+  CafeSection as CafeSectionProps,
   CallToActionBlock as CTABlockProps,
   MediaBlock as MediaBlockProps,
 } from '@/payload-types'
 import { BannerBlock } from '@/blocks/Banner/Component'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { cn } from '@/utilities/ui'
+import { CafeSection } from '@/blocks/CafeSection/Component'
 
+// example block/inline blocks
 type NodeTypes =
   | DefaultNodeTypes
-  | SerializedBlockNode<CTABlockProps | MediaBlockProps | BannerBlockProps | CodeBlockProps>
+  | SerializedBlockNode<
+      CTABlockProps | MediaBlockProps | BannerBlockProps | CodeBlockProps | CafeSectionProps
+    >
+  | SerializedInlineBlockNode<BannerBlockProps>
 
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
   const { value, relationTo } = linkNode.fields.doc!
@@ -52,6 +59,13 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
     ),
     code: ({ node }) => <CodeBlock className="col-start-2" {...node.fields} />,
     cta: ({ node }) => <CallToActionBlock {...node.fields} />,
+    cafeSection: ({ node }) => <CafeSection {...node.fields} />,
+  },
+  // example block/inline blocks
+  inlineBlocks: {
+    banner: ({ node }) => {
+      return <span>{JSON.stringify(node.fields, null, 2)}</span>
+    },
   },
 })
 
@@ -63,6 +77,7 @@ type Props = {
 
 export default function RichText(props: Props) {
   const { className, enableProse = true, enableGutter = true, ...rest } = props
+
   return (
     <ConvertRichText
       converters={jsxConverters}
