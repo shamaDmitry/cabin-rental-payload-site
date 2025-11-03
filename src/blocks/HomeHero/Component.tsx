@@ -8,8 +8,7 @@ import Container from '@/components/core/Container'
 import { getMediaSrc } from '@/utilities/getMediaSrc'
 import { Card } from '@/components/ui/card'
 import { CardContent } from '@/components/ui/card'
-// import OrderCallForm from '@/components/homepage/OrderForm'
-import { FormBlock } from '../Form/Component'
+import { FormBlock } from '@/blocks/Form/Component'
 
 export const HomeHero: React.FC<
   HomeHeroProps & {
@@ -41,8 +40,6 @@ export const HomeHero: React.FC<
                   </p>
 
                   <FormBlock enableIntro={true} form={form as FormType} />
-
-                  {/* <OrderCallForm /> */}
                 </CardContent>
               </Card>
             </div>

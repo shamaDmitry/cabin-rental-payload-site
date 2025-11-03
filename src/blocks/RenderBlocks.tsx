@@ -16,6 +16,7 @@ import { CafeSection } from '@/blocks/CafeSection/Component'
 import { TestimonialSection } from '@/blocks/TestimonialSection/Component'
 import { HomeHero } from '@/blocks/HomeHero/Component'
 import { ReservationSection } from '@/blocks/ReservationSection/Component'
+import { ContentSection } from '@/blocks/ContentSection/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -32,6 +33,7 @@ const blockComponents = {
   testimonialSection: TestimonialSection,
   homeHero: HomeHero,
   reservationSection: ReservationSection,
+  contentSection: ContentSection,
 }
 
 export const RenderBlocks: React.FC<{

@@ -1,7 +1,11 @@
+'use client'
+
 import Container from '@/components/core/Container'
 import Headline, { Level } from '@/components/core/Headline'
 import { Button } from '@/components/ui/button'
+import { Calendar } from '@/components/ui/calendar'
 import { ArrowBigDown } from 'lucide-react'
+import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 const buttons: React.ComponentProps<typeof Button>[] = [
@@ -49,12 +53,22 @@ const buttons: React.ComponentProps<typeof Button>[] = [
 ]
 
 const DsPage = () => {
+  const [date, setDate] = React.useState<Date | undefined>(new Date())
+
   return (
     <Container className="py-12">
+      <Calendar
+        mode="single"
+        selected={date}
+        onSelect={setDate}
+        className="rounded-md border shadow-sm"
+        captionLayout="dropdown"
+      />
+
       <div className="flex gap-4 flex-wrap mb-4">
         {buttons.map((button) => {
           return (
-            <Button key={button.id} {...button}>
+            <Button key={button.id} suppressHydrationWarning {...button}>
               {button.children}
             </Button>
           )

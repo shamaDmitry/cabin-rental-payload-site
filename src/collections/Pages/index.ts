@@ -32,6 +32,7 @@ import { CafeSection } from '@/blocks/CafeSection/config'
 import { TestimonialSection } from '@/blocks/TestimonialSection/config'
 import { HomeHero } from '@/blocks/HomeHero/config'
 import { ReservationSection } from '@/blocks/ReservationSection/config'
+import { ContentSection } from '@/blocks/ContentSection/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -98,7 +99,8 @@ export const Pages: CollectionConfig<'pages'> = {
                 CafeSection,
                 TestimonialSection,
                 HomeHero,
-                ReservationSection
+                ReservationSection,
+                ContentSection,
               ],
               required: true,
               admin: {

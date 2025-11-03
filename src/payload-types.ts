@@ -250,6 +250,7 @@ export interface Page {
     | TestimonialSection
     | HomeHero
     | ReservationSection
+    | ContentSection
   )[];
   meta?: {
     title?: string | null;
@@ -831,6 +832,16 @@ export interface Form {
             blockName?: string | null;
             blockType: 'textarea';
           }
+        | {
+            name: string;
+            label?: string | null;
+            width?: number | null;
+            required?: boolean | null;
+            defaultValue?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'date';
+          }
       )[]
     | null;
   submitButtonLabel?: string | null;
@@ -1276,6 +1287,31 @@ export interface ReservationSection {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContentSection".
+ */
+export interface ContentSection {
+  backgroundImage?: (string | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'contentSection';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1618,6 +1654,7 @@ export interface PagesSelect<T extends boolean = true> {
         testimonialSection?: T | TestimonialSectionSelect<T>;
         homeHero?: T | HomeHeroSelect<T>;
         reservationSection?: T | ReservationSectionSelect<T>;
+        contentSection?: T | ContentSectionSelect<T>;
       };
   meta?:
     | T
@@ -1884,6 +1921,16 @@ export interface ReservationSectionSelect<T extends boolean = true> {
   backgroundImage?: T;
   description?: T;
   form?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContentSection_select".
+ */
+export interface ContentSectionSelect<T extends boolean = true> {
+  backgroundImage?: T;
+  content?: T;
   id?: T;
   blockName?: T;
 }
@@ -2253,6 +2300,17 @@ export interface FormsSelect<T extends boolean = true> {
               width?: T;
               defaultValue?: T;
               required?: T;
+              id?: T;
+              blockName?: T;
+            };
+        date?:
+          | T
+          | {
+              name?: T;
+              label?: T;
+              width?: T;
+              required?: T;
+              defaultValue?: T;
               id?: T;
               blockName?: T;
             };

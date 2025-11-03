@@ -1,4 +1,5 @@
 'use client'
+
 import type { FormFieldBlock, Form as FormType } from '@payloadcms/plugin-form-builder/types'
 
 import { useRouter } from 'next/navigation'
@@ -153,6 +154,7 @@ export const FormBlock: React.FC<
                       </div>
                     )
                   }
+
                   return null
                 })}
             </div>

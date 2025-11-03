@@ -27,7 +27,7 @@ const ActivityCard: FC<ActivityCardProps> = ({ className, title, price, descript
         alt={title}
         width={1200}
         height={200}
-        className="w-full rounded-xl mb-4"
+        className="w-full rounded-xl mb-4 h-52 object-cover"
       />
 
       <Headline level={3} className="mb-2">

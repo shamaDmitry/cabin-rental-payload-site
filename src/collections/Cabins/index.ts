@@ -5,6 +5,7 @@ import { authenticated } from '@/access/authenticated'
 
 export const Cabins: CollectionConfig = {
   slug: 'cabins',
+  defaultSort: '-price',
   access: {
     create: authenticated,
     delete: authenticated,
