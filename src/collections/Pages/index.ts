@@ -33,6 +33,9 @@ import { TestimonialSection } from '@/blocks/TestimonialSection/config'
 import { HomeHero } from '@/blocks/HomeHero/config'
 import { ReservationSection } from '@/blocks/ReservationSection/config'
 import { ContentSection } from '@/blocks/ContentSection/config'
+import { AboutHero } from '@/blocks/AboutHero/config'
+import { FeaturesSection } from '@/blocks/FeaturesSection/config'
+import { SeasonActivitiesSection } from '@/blocks/SeasonActivitiesSection/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   defaultSort: '-updatedAt',
@@ -102,6 +105,9 @@ export const Pages: CollectionConfig<'pages'> = {
                 HomeHero,
                 ReservationSection,
                 ContentSection,
+                AboutHero,
+                FeaturesSection,
+                SeasonActivitiesSection
               ],
               required: true,
               admin: {

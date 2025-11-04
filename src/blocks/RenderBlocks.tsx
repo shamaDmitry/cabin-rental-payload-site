@@ -17,6 +17,9 @@ import { TestimonialSection } from '@/blocks/TestimonialSection/Component'
 import { HomeHero } from '@/blocks/HomeHero/Component'
 import { ReservationSection } from '@/blocks/ReservationSection/Component'
 import { ContentSection } from '@/blocks/ContentSection/Component'
+import { AboutHero } from '@/blocks/AboutHero/Component'
+import { FeaturesSection } from '@/blocks/FeaturesSection/Component'
+import { SeasonActivitiesSection } from '@/blocks/SeasonActivitiesSection/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -34,6 +37,9 @@ const blockComponents = {
   homeHero: HomeHero,
   reservationSection: ReservationSection,
   contentSection: ContentSection,
+  aboutHero: AboutHero,
+  featuresSection: FeaturesSection,
+  seasonActivitiesSection: SeasonActivitiesSection,
 }
 
 export const RenderBlocks: React.FC<{

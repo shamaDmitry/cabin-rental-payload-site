@@ -1,14 +1,4 @@
-import type { Block, Field } from 'payload'
-
-import {
-  FixedToolbarFeature,
-  HeadingFeature,
-  InlineToolbarFeature,
-  lexicalEditor,
-} from '@payloadcms/richtext-lexical'
-
-import { linkGroup } from '@/fields/linkGroup'
-import { FormBlock } from '@/blocks/Form/config'
+import type { Block } from 'payload'
 
 export const HomeHero: Block = {
   slug: 'homeHero',

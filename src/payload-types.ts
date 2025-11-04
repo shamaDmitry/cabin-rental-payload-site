@@ -77,6 +77,9 @@ export interface Config {
     cabinsAmenity: CabinsAmenity;
     activities: Activity;
     cafeCard: CafeCard;
+    aboutCard: AboutCard;
+    seasonActivities: SeasonActivity;
+    seasonActivityItem: SeasonActivityItem;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -98,6 +101,9 @@ export interface Config {
     cabinsAmenity: CabinsAmenitySelect<false> | CabinsAmenitySelect<true>;
     activities: ActivitiesSelect<false> | ActivitiesSelect<true>;
     cafeCard: CafeCardSelect<false> | CafeCardSelect<true>;
+    aboutCard: AboutCardSelect<false> | AboutCardSelect<true>;
+    seasonActivities: SeasonActivitiesSelect<false> | SeasonActivitiesSelect<true>;
+    seasonActivityItem: SeasonActivityItemSelect<false> | SeasonActivityItemSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -251,6 +257,9 @@ export interface Page {
     | HomeHero
     | ReservationSection
     | ContentSection
+    | AboutHero
+    | FeaturesSection
+    | SeasonActivitiesSection
   )[];
   meta?: {
     title?: string | null;
@@ -1312,6 +1321,94 @@ export interface ContentSection {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AboutHero".
+ */
+export interface AboutHero {
+  bgImage: string | Media;
+  mainImage: string | Media;
+  headline: string;
+  subHeadline: string;
+  body?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'aboutHero';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FeaturesSection".
+ */
+export interface FeaturesSection {
+  backgroundImage?: (string | null) | Media;
+  description: string;
+  cards: (string | AboutCard)[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'featuresSection';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "aboutCard".
+ */
+export interface AboutCard {
+  id: string;
+  headline: string;
+  description: string;
+  image?: (string | null) | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SeasonActivitiesSection".
+ */
+export interface SeasonActivitiesSection {
+  headline: string;
+  backgroundImage?: (string | null) | Media;
+  seasonActivities?: (string | SeasonActivity)[] | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'seasonActivitiesSection';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "seasonActivities".
+ */
+export interface SeasonActivity {
+  id: string;
+  headline?: string | null;
+  mediaPosition: 'start' | 'end';
+  description?: string | null;
+  image: string | Media;
+  list: (string | SeasonActivityItem)[];
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "seasonActivityItem".
+ */
+export interface SeasonActivityItem {
+  id: string;
+  title: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1543,6 +1640,18 @@ export interface PayloadLockedDocument {
         value: string | CafeCard;
       } | null)
     | ({
+        relationTo: 'aboutCard';
+        value: string | AboutCard;
+      } | null)
+    | ({
+        relationTo: 'seasonActivities';
+        value: string | SeasonActivity;
+      } | null)
+    | ({
+        relationTo: 'seasonActivityItem';
+        value: string | SeasonActivityItem;
+      } | null)
+    | ({
         relationTo: 'redirects';
         value: string | Redirect;
       } | null)
@@ -1655,6 +1764,9 @@ export interface PagesSelect<T extends boolean = true> {
         homeHero?: T | HomeHeroSelect<T>;
         reservationSection?: T | ReservationSectionSelect<T>;
         contentSection?: T | ContentSectionSelect<T>;
+        aboutHero?: T | AboutHeroSelect<T>;
+        featuresSection?: T | FeaturesSectionSelect<T>;
+        seasonActivitiesSection?: T | SeasonActivitiesSectionSelect<T>;
       };
   meta?:
     | T
@@ -1936,6 +2048,41 @@ export interface ContentSectionSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AboutHero_select".
+ */
+export interface AboutHeroSelect<T extends boolean = true> {
+  bgImage?: T;
+  mainImage?: T;
+  headline?: T;
+  subHeadline?: T;
+  body?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FeaturesSection_select".
+ */
+export interface FeaturesSectionSelect<T extends boolean = true> {
+  backgroundImage?: T;
+  description?: T;
+  cards?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SeasonActivitiesSection_select".
+ */
+export interface SeasonActivitiesSectionSelect<T extends boolean = true> {
+  headline?: T;
+  backgroundImage?: T;
+  seasonActivities?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "posts_select".
  */
 export interface PostsSelect<T extends boolean = true> {
@@ -2153,6 +2300,39 @@ export interface CafeCardSelect<T extends boolean = true> {
   headline?: T;
   description?: T;
   image?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "aboutCard_select".
+ */
+export interface AboutCardSelect<T extends boolean = true> {
+  headline?: T;
+  description?: T;
+  image?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "seasonActivities_select".
+ */
+export interface SeasonActivitiesSelect<T extends boolean = true> {
+  headline?: T;
+  mediaPosition?: T;
+  description?: T;
+  image?: T;
+  list?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "seasonActivityItem_select".
+ */
+export interface SeasonActivityItemSelect<T extends boolean = true> {
+  title?: T;
   updatedAt?: T;
   createdAt?: T;
 }

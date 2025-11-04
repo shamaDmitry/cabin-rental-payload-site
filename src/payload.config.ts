@@ -16,12 +16,17 @@ import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
+
+import { resendAdapter } from '@payloadcms/email-resend'
+
 import { Cabins } from '@/collections/Cabins'
 import { CabinsDetail } from '@/collections/Cabins/CabinsDetail'
 import { CabinsAmenity } from '@/collections/Cabins/CabinsAmenity'
 import { Activities } from '@/collections/Activities'
 import { CafeCard } from '@/collections/CafeCard'
-import { resendAdapter } from '@payloadcms/email-resend'
+import { AboutCard } from '@/collections/AboutCard'
+import { SeasonActivities } from '@/collections/SeasonActivities'
+import { SeasonActivityItem } from '@/collections/SeasonActivityItem'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -79,6 +84,9 @@ export default buildConfig({
     CabinsAmenity,
     Activities,
     CafeCard,
+    AboutCard,
+    SeasonActivities,
+    SeasonActivityItem,
   ],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],

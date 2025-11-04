@@ -1,15 +1,17 @@
-import { cn } from "@/lib/utils";
-import { Check } from "lucide-react";
-import { FC } from "react";
+import { cn } from '@/lib/utils'
+import { Check } from 'lucide-react'
+import { FC } from 'react'
 
 interface ListProps {
-  data: { id: string | number; content: string }[];
-  className?: string;
+  data: { id: string | number; title: string }[]
+  className?: string
 }
 
 const List: FC<ListProps> = ({ data, className }) => {
+  if (!data.length) return <p>Nothing is here</p>
+
   return (
-    <ul className={cn("flex flex-col gap-4", className)}>
+    <ul className={cn('flex flex-col gap-4', className)}>
       {data.map((item) => {
         return (
           <li key={item.id} className="flex items-center gap-5">
@@ -17,12 +19,12 @@ const List: FC<ListProps> = ({ data, className }) => {
               <Check className="size-4" />
             </span>
 
-            {item.content}
+            {item.title}
           </li>
-        );
+        )
       })}
     </ul>
-  );
-};
+  )
+}
 
-export default List;
+export default List
