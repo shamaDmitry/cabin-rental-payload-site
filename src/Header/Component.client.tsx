@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react'
 
 import type { Header } from '@/payload-types'
 
-import { Logo } from '@/components/Logo/Logo'
+// import { Logo } from '@/components/Logo/Logo'
 import { HeaderNav } from './Nav'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'

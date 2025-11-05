@@ -8,7 +8,7 @@ import { Controller } from 'react-hook-form'
 
 import { Error } from '../Error'
 import { Width } from '../Width'
-import { stateOptions } from './options'
+// import { stateOptions } from './options'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Button } from '@/components/ui/button'
 import { CalendarIcon } from 'lucide-react'
@@ -38,8 +38,8 @@ export const Datepicker: React.FC<
         control={control}
         defaultValue=""
         name={name}
-        render={({ field: { onChange, value } }) => {
-          const controlledValue = stateOptions.find((t) => t.value === value)
+        render={({ field: {} }) => {
+          // const controlledValue = stateOptions.find((t) => t.value === value)
 
           return (
             <>

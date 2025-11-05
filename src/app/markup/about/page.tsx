@@ -1,11 +1,11 @@
-import AboutCard from "@/components/about/AboutCard";
-import Container from "@/components/core/Container";
-import Headline from "@/components/core/Headline";
-import List from "@/components/List";
-import Image from "next/image";
-import { v4 as uuidv4 } from "uuid";
-import React from "react";
-import AboutForm from "@/components/about/AboutForm";
+import AboutCard from '@/components/about/AboutCard'
+import Container from '@/components/core/Container'
+import Headline from '@/components/core/Headline'
+import List from '@/components/List'
+import Image from 'next/image'
+import { v4 as uuidv4 } from 'uuid'
+import React from 'react'
+import AboutForm from '@/components/about/AboutForm'
 
 const AboutPage = () => {
   return (
@@ -30,15 +30,14 @@ const AboutPage = () => {
           </Headline>
 
           <p className="text-lg mb-8">
-            Yosemite National Park in picturesque Mariposa County invites you to
-            explore this magnificent park in any season.
+            Yosemite National Park in picturesque Mariposa County invites you to explore this
+            magnificent park in any season.
           </p>
 
           <p>
-            We offer numerous things to do and view, such as aspiring granite
-            rocks, thrilling waterfalls, and meadows. No matter it’s your
-            first-time visit to Yosemite National Park or you’re a regular
-            guest, be sure you’ll always find something unique here. Rent any of
+            We offer numerous things to do and view, such as aspiring granite rocks, thrilling
+            waterfalls, and meadows. No matter it’s your first-time visit to Yosemite National Park
+            or you’re a regular guest, be sure you’ll always find something unique here. Rent any of
             our cabins and enjoy your stay!
           </p>
         </Container>
@@ -52,13 +51,12 @@ const AboutPage = () => {
       >
         <Container className="text-center text-background">
           <p className="mb-12">
-            We have a children&apos;s playground with a number of swings and
-            slides. Our spacious terrain is for you to relax in the outdoors.
-            You don&apos;t need to take food with you, as we offer a shop with
-            the freshest local produce including bakery and butchery. Our cafe
-            is open 7 days a week from 9:30 for our famous free breakfasts, and
-            a diverse menu of lunches. Additionally, we offer a variety of
-            cabins for you to choose from. Here are some of them:
+            We have a children&apos;s playground with a number of swings and slides. Our spacious
+            terrain is for you to relax in the outdoors. You don&apos;t need to take food with you,
+            as we offer a shop with the freshest local produce including bakery and butchery. Our
+            cafe is open 7 days a week from 9:30 for our famous free breakfasts, and a diverse menu
+            of lunches. Additionally, we offer a variety of cabins for you to choose from. Here are
+            some of them:
           </p>
 
           <div className="grid grid-cols-3 gap-8">
@@ -74,7 +72,7 @@ const AboutPage = () => {
                         with a spacious fenced area. Explore a lot of tree-lined
                         trails, see ranch animals and spectacular views."
                   />
-                );
+                )
               })}
           </div>
         </Container>
@@ -108,19 +106,18 @@ const AboutPage = () => {
               </Headline>
 
               <p className="mb-5">
-                Visit our park in winter and celebrate Christmas and New Year
-                holidays with us. You and all your family members will be
-                impressed with a variety of breathtaking adventures and winter
-                activities we have to offer.
+                Visit our park in winter and celebrate Christmas and New Year holidays with us. You
+                and all your family members will be impressed with a variety of breathtaking
+                adventures and winter activities we have to offer.
               </p>
 
               <List
                 data={[
-                  { id: uuidv4(), content: "Snowmobile riding" },
-                  { id: uuidv4(), content: "Snowboarding" },
-                  { id: uuidv4(), content: "Snow-shoeing" },
-                  { id: uuidv4(), content: "Skating" },
-                  { id: uuidv4(), content: "Skiing" },
+                  { id: uuidv4(), title: 'Snowmobile riding' },
+                  { id: uuidv4(), title: 'Snowboarding' },
+                  { id: uuidv4(), title: 'Snow-shoeing' },
+                  { id: uuidv4(), title: 'Skating' },
+                  { id: uuidv4(), title: 'Skiing' },
                 ]}
               />
             </div>
@@ -137,23 +134,22 @@ const AboutPage = () => {
               </Headline>
 
               <p className="mb-5">
-                Whatever the season, Yosemite National Park has a wide range of
-                activities for you to choose from. Visit us in summer and enjoy
-                your vacation!
+                Whatever the season, Yosemite National Park has a wide range of activities for you
+                to choose from. Visit us in summer and enjoy your vacation!
               </p>
 
               <List
                 data={[
-                  { id: uuidv4(), content: "Horseback riding" },
-                  { id: uuidv4(), content: "Rock climbing" },
-                  { id: uuidv4(), content: "Biking" },
-                  { id: uuidv4(), content: "Cycling" },
-                  { id: uuidv4(), content: "Fishing" },
-                  { id: uuidv4(), content: "Hiking" },
-                  { id: uuidv4(), content: "Rafting" },
-                  { id: uuidv4(), content: "Golf" },
-                  { id: uuidv4(), content: "Camping" },
-                  { id: uuidv4(), content: "Guided tours" },
+                  { id: uuidv4(), title: 'Horseback riding' },
+                  { id: uuidv4(), title: 'Rock climbing' },
+                  { id: uuidv4(), title: 'Biking' },
+                  { id: uuidv4(), title: 'Cycling' },
+                  { id: uuidv4(), title: 'Fishing' },
+                  { id: uuidv4(), title: 'Hiking' },
+                  { id: uuidv4(), title: 'Rafting' },
+                  { id: uuidv4(), title: 'Golf' },
+                  { id: uuidv4(), title: 'Camping' },
+                  { id: uuidv4(), title: 'Guided tours' },
                 ]}
               />
             </div>
@@ -183,18 +179,17 @@ const AboutPage = () => {
           </Headline>
 
           <p className="mb-12">
-            Our bespoke spa vacations offer something unique for everyone in our
-            spa center. Improve your well-being by paying special attention to
-            our specialized spa procedures, yoga classes, Ayurveda, weight loss
-            program, and fitness classes. Supplement your daily wellness with
-            healthy cuisine for optimal health and wellness.
+            Our bespoke spa vacations offer something unique for everyone in our spa center. Improve
+            your well-being by paying special attention to our specialized spa procedures, yoga
+            classes, Ayurveda, weight loss program, and fitness classes. Supplement your daily
+            wellness with healthy cuisine for optimal health and wellness.
           </p>
 
           <figure className="rounded-lg overflow-hidden">
             <Image
               className="w-full max-h-[380px] object-cover"
               src={
-                "https://cabin-rental.weblium.site/res/5ce40621b84b1a002410eb9e/5d00b783f7675700234bed20_optimized_1400_c1400x927-0x0.webp"
+                'https://cabin-rental.weblium.site/res/5ce40621b84b1a002410eb9e/5d00b783f7675700234bed20_optimized_1400_c1400x927-0x0.webp'
               }
               alt="Spa Vacation in Yosemite National Park"
               width={1000}
@@ -219,8 +214,7 @@ const AboutPage = () => {
               <Headline className="mb-8">Any questions?</Headline>
 
               <p className="text-lg">
-                Complete the form and our manager will contact you as soon as
-                possible.
+                Complete the form and our manager will contact you as soon as possible.
               </p>
             </div>
 
@@ -231,7 +225,7 @@ const AboutPage = () => {
         </Container>
       </section>
     </>
-  );
-};
+  )
+}
 
-export default AboutPage;
+export default AboutPage

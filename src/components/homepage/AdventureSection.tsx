@@ -1,6 +1,6 @@
 import Headline from '@/components/core/Headline'
 import Container from '@/components/core/Container'
-import LightBoxCard from '@/components/LightBoxCard'
+// import LightBoxCard from '@/components/LightBoxCard'
 import { FC } from 'react'
 import { cn } from '@/lib/utils'
 // import config from '@payload-config'

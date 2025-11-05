@@ -15,8 +15,6 @@ export const SeasonActivitiesSection: React.FC<
 > = (props) => {
   const { headline, seasonActivities, backgroundImage } = props
 
-  console.log('seasonActivities', seasonActivities)
-
   return (
     <>
       <section
