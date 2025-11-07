@@ -260,6 +260,9 @@ export interface Page {
     | AboutHero
     | FeaturesSection
     | SeasonActivitiesSection
+    | SpaVacationsSection
+    | CtaFormSection
+    | SliderSection
   )[];
   meta?: {
     title?: string | null;
@@ -1409,6 +1412,48 @@ export interface SeasonActivityItem {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SpaVacationsSection".
+ */
+export interface SpaVacationsSection {
+  headline: string;
+  description: string;
+  backgroundImage?: (string | null) | Media;
+  media: string | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'spaVacationsSection';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CtaFormSection".
+ */
+export interface CtaFormSection {
+  headline: string;
+  description?: string | null;
+  backgroundImage: string | Media;
+  form: string | Form;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'ctaFormSection';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SliderSection".
+ */
+export interface SliderSection {
+  headline: string;
+  backgroundImage: string | Media;
+  slides: {
+    src?: (string | null) | Media;
+    alt?: string | null;
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'sliderSection';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1767,6 +1812,9 @@ export interface PagesSelect<T extends boolean = true> {
         aboutHero?: T | AboutHeroSelect<T>;
         featuresSection?: T | FeaturesSectionSelect<T>;
         seasonActivitiesSection?: T | SeasonActivitiesSectionSelect<T>;
+        spaVacationsSection?: T | SpaVacationsSectionSelect<T>;
+        ctaFormSection?: T | CtaFormSectionSelect<T>;
+        sliderSection?: T | SliderSectionSelect<T>;
       };
   meta?:
     | T
@@ -2078,6 +2126,47 @@ export interface SeasonActivitiesSectionSelect<T extends boolean = true> {
   headline?: T;
   backgroundImage?: T;
   seasonActivities?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SpaVacationsSection_select".
+ */
+export interface SpaVacationsSectionSelect<T extends boolean = true> {
+  headline?: T;
+  description?: T;
+  backgroundImage?: T;
+  media?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CtaFormSection_select".
+ */
+export interface CtaFormSectionSelect<T extends boolean = true> {
+  headline?: T;
+  description?: T;
+  backgroundImage?: T;
+  form?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SliderSection_select".
+ */
+export interface SliderSectionSelect<T extends boolean = true> {
+  headline?: T;
+  backgroundImage?: T;
+  slides?:
+    | T
+    | {
+        src?: T;
+        alt?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }

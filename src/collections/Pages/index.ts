@@ -1,13 +1,13 @@
 import type { CollectionConfig } from 'payload'
 
-import { authenticated } from '../../access/authenticated'
-import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
+import { authenticated } from '@/access/authenticated'
+import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
 
 import { hero } from '@/heros/config'
 import { slugField } from 'payload'
-import { populatePublishedAt } from '../../hooks/populatePublishedAt'
-import { generatePreviewPath } from '../../utilities/generatePreviewPath'
-import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
+import { populatePublishedAt } from '@/hooks/populatePublishedAt'
+import { generatePreviewPath } from '@/utilities/generatePreviewPath'
+import { revalidateDelete, revalidatePage } from '@/collections/Pages/hooks/revalidatePage'
 
 import {
   MetaDescriptionField,
@@ -36,6 +36,9 @@ import { ContentSection } from '@/blocks/ContentSection/config'
 import { AboutHero } from '@/blocks/AboutHero/config'
 import { FeaturesSection } from '@/blocks/FeaturesSection/config'
 import { SeasonActivitiesSection } from '@/blocks/SeasonActivitiesSection/config'
+import { SpaVacationsSection } from '@/blocks/SpaVacationsSection/config'
+import { CtaFormSection } from '@/blocks/CtaFormSection/config'
+import { SliderSection } from '@/blocks/SliderSection/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   defaultSort: '-updatedAt',
@@ -107,7 +110,10 @@ export const Pages: CollectionConfig<'pages'> = {
                 ContentSection,
                 AboutHero,
                 FeaturesSection,
-                SeasonActivitiesSection
+                SeasonActivitiesSection,
+                SpaVacationsSection,
+                CtaFormSection,
+                SliderSection,
               ],
               required: true,
               admin: {

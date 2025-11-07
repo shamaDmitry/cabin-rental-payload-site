@@ -1,19 +1,19 @@
-import Container from "@/components/core/Container";
-import Headline from "@/components/core/Headline";
-import CategoriesTab from "@/components/gallery/CategoriesTab";
-import GuestSlider from "@/components/gallery/GuestSlider";
-import Lightbox from "@/components/gallery/Lightbox";
-import { Suspense } from "react";
-import { v4 as uuidv4 } from "uuid";
+import Container from '@/components/core/Container'
+import Headline from '@/components/core/Headline'
+import CategoriesTab from '@/components/gallery/CategoriesTab'
+import GuestSlider from '@/components/gallery/GuestSlider'
+import Lightbox from '@/components/gallery/Lightbox'
+import { Suspense } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 const galleryCategories = [
-  { id: uuidv4(), href: "?category=summer", label: "Summer" },
-  { id: uuidv4(), href: "?category=winter", label: "Winter" },
-  { id: uuidv4(), href: "?category=spring", label: "Spring" },
-  { id: uuidv4(), href: "?category=autumn", label: "Autumn" },
-  { id: uuidv4(), href: "?category=fishing", label: "Fishing" },
-  { id: uuidv4(), href: "?category=spa", label: "SPA" },
-];
+  { id: uuidv4(), href: '?category=summer', label: 'Summer' },
+  { id: uuidv4(), href: '?category=winter', label: 'Winter' },
+  { id: uuidv4(), href: '?category=spring', label: 'Spring' },
+  { id: uuidv4(), href: '?category=autumn', label: 'Autumn' },
+  { id: uuidv4(), href: '?category=fishing', label: 'Fishing' },
+  { id: uuidv4(), href: '?category=spa', label: 'SPA' },
+]
 
 const GalleryPage = () => {
   return (
@@ -47,11 +47,11 @@ const GalleryPage = () => {
         <Container>
           <Headline className="mb-14 text-center ">Our guests</Headline>
 
-          <GuestSlider />
+          {/* <GuestSlider /> */}
         </Container>
       </section>
     </>
-  );
-};
+  )
+}
 
-export default GalleryPage;
+export default GalleryPage

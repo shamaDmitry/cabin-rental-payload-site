@@ -20,24 +20,28 @@ export async function Footer() {
     <>
       <footer>
         <Container>
-          <div className="flex items-center gap-4 pt-20 pb-4">
-            <div className="w-full max-w-3xs">
+          <div className="flex flex-col md:flex-row items-center gap-4 pt-4 md:pt-20 pb-4">
+            <div className="w-full max-w-3xs text-center md:text-left">
               <Link href="/" className="inline-flex">
                 <Image src="/images/logo.webp" alt="logo" width={146} height={62} />
               </Link>
             </div>
 
             <div className="flex-1">
-              <nav className="grid grid-cols-3 gap-4">
+              <nav className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {navItems.map(({ link }, i) => {
                   return (
-                    <CMSLink className="whitespace-nowrap hover:text-primary" key={i} {...link} />
+                    <CMSLink
+                      className="text-center md:text-left whitespace-nowrap hover:text-primary"
+                      key={i}
+                      {...link}
+                    />
                   )
                 })}
               </nav>
             </div>
 
-            <div className="text-right">
+            <div className="text-center md:text-right">
               <Headline level={5} className="mb-4">
                 Follow Us
               </Headline>

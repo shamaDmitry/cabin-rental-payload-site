@@ -20,6 +20,9 @@ import { ContentSection } from '@/blocks/ContentSection/Component'
 import { AboutHero } from '@/blocks/AboutHero/Component'
 import { FeaturesSection } from '@/blocks/FeaturesSection/Component'
 import { SeasonActivitiesSection } from '@/blocks/SeasonActivitiesSection/Component'
+import { SpaVacationsSection } from '@/blocks/SpaVacationsSection/Component'
+import { CtaFormSection } from '@/blocks/CtaFormSection/Component'
+import { SliderSection } from '@/blocks/SliderSection/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -40,6 +43,9 @@ const blockComponents = {
   aboutHero: AboutHero,
   featuresSection: FeaturesSection,
   seasonActivitiesSection: SeasonActivitiesSection,
+  spaVacationsSection: SpaVacationsSection,
+  ctaFormSection: CtaFormSection,
+  sliderSection: SliderSection,
 }
 
 export const RenderBlocks: React.FC<{
