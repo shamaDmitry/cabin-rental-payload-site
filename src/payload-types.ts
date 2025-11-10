@@ -80,6 +80,8 @@ export interface Config {
     aboutCard: AboutCard;
     seasonActivities: SeasonActivity;
     seasonActivityItem: SeasonActivityItem;
+    galleryMedias: GalleryMedia;
+    mediaCategories: MediaCategory;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -104,6 +106,8 @@ export interface Config {
     aboutCard: AboutCardSelect<false> | AboutCardSelect<true>;
     seasonActivities: SeasonActivitiesSelect<false> | SeasonActivitiesSelect<true>;
     seasonActivityItem: SeasonActivityItemSelect<false> | SeasonActivityItemSelect<true>;
+    galleryMedias: GalleryMediasSelect<false> | GalleryMediasSelect<true>;
+    mediaCategories: MediaCategoriesSelect<false> | MediaCategoriesSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -263,6 +267,7 @@ export interface Page {
     | SpaVacationsSection
     | CtaFormSection
     | SliderSection
+    | LightBoxGallerySection
   )[];
   meta?: {
     title?: string | null;
@@ -1454,6 +1459,127 @@ export interface SliderSection {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LightBoxGallerySection".
+ */
+export interface LightBoxGallerySection {
+  headline: string;
+  backgroundImage?: (string | null) | Media;
+  galleryCategories: (string | MediaCategory)[];
+  content?: (string | GalleryMedia)[] | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'lightBoxGallerySection';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "mediaCategories".
+ */
+export interface MediaCategory {
+  id: string;
+  title: string;
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "galleryMedias".
+ */
+export interface GalleryMedia {
+  id: string;
+  category: string | MediaCategory;
+  alt?: string | null;
+  caption?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+  sizes?: {
+    thumbnail?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    square?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    small?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    medium?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    large?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    xlarge?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    og?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1697,6 +1823,14 @@ export interface PayloadLockedDocument {
         value: string | SeasonActivityItem;
       } | null)
     | ({
+        relationTo: 'galleryMedias';
+        value: string | GalleryMedia;
+      } | null)
+    | ({
+        relationTo: 'mediaCategories';
+        value: string | MediaCategory;
+      } | null)
+    | ({
         relationTo: 'redirects';
         value: string | Redirect;
       } | null)
@@ -1815,6 +1949,7 @@ export interface PagesSelect<T extends boolean = true> {
         spaVacationsSection?: T | SpaVacationsSectionSelect<T>;
         ctaFormSection?: T | CtaFormSectionSelect<T>;
         sliderSection?: T | SliderSectionSelect<T>;
+        lightBoxGallerySection?: T | LightBoxGallerySectionSelect<T>;
       };
   meta?:
     | T
@@ -2172,6 +2307,18 @@ export interface SliderSectionSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LightBoxGallerySection_select".
+ */
+export interface LightBoxGallerySectionSelect<T extends boolean = true> {
+  headline?: T;
+  backgroundImage?: T;
+  galleryCategories?: T;
+  content?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "posts_select".
  */
 export interface PostsSelect<T extends boolean = true> {
@@ -2422,6 +2569,111 @@ export interface SeasonActivitiesSelect<T extends boolean = true> {
  */
 export interface SeasonActivityItemSelect<T extends boolean = true> {
   title?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "galleryMedias_select".
+ */
+export interface GalleryMediasSelect<T extends boolean = true> {
+  category?: T;
+  alt?: T;
+  caption?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+  sizes?:
+    | T
+    | {
+        thumbnail?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        square?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        small?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        medium?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        large?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        xlarge?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        og?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+      };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "mediaCategories_select".
+ */
+export interface MediaCategoriesSelect<T extends boolean = true> {
+  title?: T;
+  generateSlug?: T;
+  slug?: T;
   updatedAt?: T;
   createdAt?: T;
 }

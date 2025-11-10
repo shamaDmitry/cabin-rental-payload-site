@@ -23,6 +23,7 @@ import { SeasonActivitiesSection } from '@/blocks/SeasonActivitiesSection/Compon
 import { SpaVacationsSection } from '@/blocks/SpaVacationsSection/Component'
 import { CtaFormSection } from '@/blocks/CtaFormSection/Component'
 import { SliderSection } from '@/blocks/SliderSection/Component'
+import { LightBoxGallerySection } from '@/blocks/LightBoxGallerySection/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -46,6 +47,7 @@ const blockComponents = {
   spaVacationsSection: SpaVacationsSection,
   ctaFormSection: CtaFormSection,
   sliderSection: SliderSection,
+  lightBoxGallerySection: LightBoxGallerySection,
 }
 
 export const RenderBlocks: React.FC<{

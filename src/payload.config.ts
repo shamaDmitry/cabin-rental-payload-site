@@ -27,6 +27,8 @@ import { CafeCard } from '@/collections/CafeCard'
 import { AboutCard } from '@/collections/AboutCard'
 import { SeasonActivities } from '@/collections/SeasonActivities'
 import { SeasonActivityItem } from '@/collections/SeasonActivityItem'
+import { GalleryMedias } from '@/collections/GalleryMedias'
+import { MediaCategories } from '@/collections/MediaCategories'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -87,6 +89,8 @@ export default buildConfig({
     AboutCard,
     SeasonActivities,
     SeasonActivityItem,
+    GalleryMedias,
+    MediaCategories,
   ],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],

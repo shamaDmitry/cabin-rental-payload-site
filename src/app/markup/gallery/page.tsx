@@ -2,7 +2,7 @@ import Container from '@/components/core/Container'
 import Headline from '@/components/core/Headline'
 import CategoriesTab from '@/components/gallery/CategoriesTab'
 import GuestSlider from '@/components/gallery/GuestSlider'
-import Lightbox from '@/components/gallery/Lightbox'
+import Lightbox from '@/components/gallery/GalleryLightbox'
 import { Suspense } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -28,13 +28,13 @@ const GalleryPage = () => {
           <Headline className="mb-14 text-center">Gallery</Headline>
 
           <Suspense fallback={<div>Loading...</div>}>
-            <CategoriesTab
+            {/* <CategoriesTab
               activeCategoryId={galleryCategories[0].id}
               galleryCategories={galleryCategories}
-            />
+            /> */}
           </Suspense>
 
-          <Lightbox />
+          {/* <Lightbox /> */}
         </Container>
       </section>
 
