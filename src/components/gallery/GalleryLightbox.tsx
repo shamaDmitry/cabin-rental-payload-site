@@ -7,11 +7,11 @@ import NextJsImage from '@/components/gallery/NextJsImage'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
 import Zoom from 'yet-another-react-lightbox/plugins/zoom'
-import { GalleryMedia } from '@/payload-types'
+import { Media } from '@/payload-types'
 import { getMediaSrc } from '@/utilities/getMediaSrc'
 
 interface GalleryLightboxProps {
-  slides: GalleryMedia[]
+  slides: Media[]
 }
 
 const GalleryLightbox: FC<GalleryLightboxProps> = ({ slides }) => {
@@ -20,7 +20,7 @@ const GalleryLightbox: FC<GalleryLightboxProps> = ({ slides }) => {
 
   return (
     <div>
-      <div className="grid grid-cols-12 gap-y-8">
+      <div className="grid grid-cols-12 gap-y-8 grid-rows-2">
         {slides.map((slide, index) => {
           return (
             <div
@@ -30,7 +30,7 @@ const GalleryLightbox: FC<GalleryLightboxProps> = ({ slides }) => {
               })}
             >
               <Image
-                className="cursor-pointer size-full object-cover max-h-[700px]"
+                className="cursor-pointer size-full object-cover"
                 src={getMediaSrc(slide)}
                 alt=""
                 width={1000}
@@ -53,7 +53,10 @@ const GalleryLightbox: FC<GalleryLightboxProps> = ({ slides }) => {
           setOpen(false)
           setIndex(-1)
         }}
-        slides={slides}
+        slides={slides.map((slide) => ({
+          src: getMediaSrc(slide),
+          alt: slide.alt || '',
+        }))}
         render={{ slide: NextJsImage }}
       />
     </div>

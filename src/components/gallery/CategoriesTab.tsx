@@ -21,18 +21,15 @@ const CategoriesTab: FC<CategoriesTabProps> = ({
   const searchParams = useSearchParams()
   const category = searchParams.get('category')
 
-  console.log('category', category)
-  console.log('activeCategoryId', activeCategoryId)
-
   return (
-    <div className="border-b mb-8 mx-4 flex items-center justify-center">
+    <div className="border-b mb-8 mx-4 flex items-center justify-center flex-wrap">
       {galleryCategories.map((item) => {
         return (
           <Button
             asChild
             key={item.id}
             className={cn(
-              'transition opacity-60 relative after:border-b-2 after:border-transparent after:absolute after:bottom-0 after:left-0 after:w-full rounded-none hover:no-underline hover:after:border-foreground text-foreground hover:opacity-100 py-4 px-6 h-auto capitalize text-lg',
+              'transition opacity-60 relative after:border-b-2 after:border-transparent after:absolute after:bottom-0 after:left-0 after:w-full rounded-none hover:no-underline hover:after:border-foreground text-foreground hover:opacity-100 py-4 px-6 h-auto capitalize text-base md:text-lg',
               {
                 'after:border-foreground opacity-100': category
                   ? category?.toString() === item.title.toLocaleLowerCase()

@@ -1,13 +1,12 @@
 import type { Block } from 'payload'
 
-export const LightBoxGallerySection: Block = {
-  slug: 'lightBoxGallerySection',
-  interfaceName: 'LightBoxGallerySection',
+export const CabinSection: Block = {
+  slug: 'cabin-section',
+  interfaceName: 'CabinSection',
   fields: [
     {
       name: 'headline',
       type: 'text',
-      required: true,
       label: 'Headline',
     },
     {
@@ -17,13 +16,11 @@ export const LightBoxGallerySection: Block = {
       label: 'Background Image',
     },
     {
-      name: 'galleryCategories',
-      relationTo: 'mediaCategories',
+      name: 'cabin',
       type: 'relationship',
-      hasMany: true,
-      label: 'Gallery Categories',
-      minRows: 3,
+      relationTo: 'cabins',
       required: true,
+      label: 'Cabin',
     },
   ],
 }

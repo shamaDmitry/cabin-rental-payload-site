@@ -1465,7 +1465,6 @@ export interface LightBoxGallerySection {
   headline: string;
   backgroundImage?: (string | null) | Media;
   galleryCategories: (string | MediaCategory)[];
-  content?: (string | GalleryMedia)[] | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'lightBoxGallerySection';
@@ -2313,7 +2312,6 @@ export interface LightBoxGallerySectionSelect<T extends boolean = true> {
   headline?: T;
   backgroundImage?: T;
   galleryCategories?: T;
-  content?: T;
   id?: T;
   blockName?: T;
 }
