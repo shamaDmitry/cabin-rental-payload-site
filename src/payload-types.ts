@@ -268,6 +268,7 @@ export interface Page {
     | CtaFormSection
     | SliderSection
     | LightBoxGallerySection
+    | CabinSection
   )[];
   meta?: {
     title?: string | null;
@@ -1486,6 +1487,18 @@ export interface MediaCategory {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CabinSection".
+ */
+export interface CabinSection {
+  headline?: string | null;
+  backgroundImage?: (string | null) | Media;
+  cabin: string | Cabin;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'cabinSection';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "galleryMedias".
  */
 export interface GalleryMedia {
@@ -1949,6 +1962,7 @@ export interface PagesSelect<T extends boolean = true> {
         ctaFormSection?: T | CtaFormSectionSelect<T>;
         sliderSection?: T | SliderSectionSelect<T>;
         lightBoxGallerySection?: T | LightBoxGallerySectionSelect<T>;
+        cabinSection?: T | CabinSectionSelect<T>;
       };
   meta?:
     | T
@@ -2312,6 +2326,17 @@ export interface LightBoxGallerySectionSelect<T extends boolean = true> {
   headline?: T;
   backgroundImage?: T;
   galleryCategories?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CabinSection_select".
+ */
+export interface CabinSectionSelect<T extends boolean = true> {
+  headline?: T;
+  backgroundImage?: T;
+  cabin?: T;
   id?: T;
   blockName?: T;
 }

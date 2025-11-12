@@ -1,7 +1,7 @@
 import type { Block } from 'payload'
 
 export const CabinSection: Block = {
-  slug: 'cabin-section',
+  slug: 'cabinSection',
   interfaceName: 'CabinSection',
   fields: [
     {

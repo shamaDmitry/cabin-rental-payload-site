@@ -17,11 +17,7 @@ import { Where } from 'payload'
 import { stringify } from 'qs-esm'
 import { useSearchParams } from 'next/navigation'
 
-export const LightBoxGallerySection: React.FC<
-  LightBoxGallerySectionProps & {
-    id?: string
-  }
-> = (props) => {
+export const LightBoxGallerySection: React.FC<LightBoxGallerySectionProps> = (props) => {
   const { headline, galleryCategories, backgroundImage } = props
   const categories = galleryCategories as MediaCategory[]
 

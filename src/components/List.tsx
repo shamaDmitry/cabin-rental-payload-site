@@ -1,9 +1,10 @@
 import { cn } from '@/lib/utils'
+import { CabinsAmenity } from '@/payload-types'
 import { Check } from 'lucide-react'
 import { FC } from 'react'
 
 interface ListProps {
-  data: { id: string | number; title: string }[]
+  data: { id: string | number; title: string }[] | CabinsAmenity[]
   className?: string
 }
 

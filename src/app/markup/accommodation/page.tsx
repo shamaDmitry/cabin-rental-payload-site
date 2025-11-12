@@ -1,11 +1,11 @@
-import CabinCard, { Cabin } from '@/components/acommodation/CabinCard'
+import CabinCard from '@/components/acommodation/CabinCard'
 import Container from '@/components/core/Container'
 import Headline from '@/components/core/Headline'
 import ReservationForm from '@/components/homepage/ReservationForm'
 import { Card, CardContent } from '@/components/ui/card'
 import { v4 as uuidv4 } from 'uuid'
 
-const cabins: Cabin[] = [
+const cabins = [
   {
     id: uuidv4(),
     name: 'River Chalet',
@@ -97,9 +97,7 @@ const AccommodationsPage = () => {
                       : undefined,
                 }}
               >
-                <Container>
-                  <CabinCard data={cabin} />
-                </Container>
+                <Container>{/* <CabinCard data={cabin} /> */}</Container>
               </div>
             )
           })}

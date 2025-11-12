@@ -40,6 +40,7 @@ import { SpaVacationsSection } from '@/blocks/SpaVacationsSection/config'
 import { CtaFormSection } from '@/blocks/CtaFormSection/config'
 import { SliderSection } from '@/blocks/SliderSection/config'
 import { LightBoxGallerySection } from '@/blocks/LightBoxGallerySection/config'
+import { CabinSection } from '@/blocks/CabinSection/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   defaultSort: '-updatedAt',
@@ -116,6 +117,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 CtaFormSection,
                 SliderSection,
                 LightBoxGallerySection,
+                CabinSection,
               ],
               required: true,
               admin: {

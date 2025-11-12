@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, Suspense } from 'react'
 
 import type { Page } from '@/payload-types'
 
@@ -24,6 +24,7 @@ import { SpaVacationsSection } from '@/blocks/SpaVacationsSection/Component'
 import { CtaFormSection } from '@/blocks/CtaFormSection/Component'
 import { SliderSection } from '@/blocks/SliderSection/Component'
 import { LightBoxGallerySection } from '@/blocks/LightBoxGallerySection/Component'
+import { CabinSection } from '@/blocks/CabinSection/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -48,6 +49,7 @@ const blockComponents = {
   ctaFormSection: CtaFormSection,
   sliderSection: SliderSection,
   lightBoxGallerySection: LightBoxGallerySection,
+  cabinSection: CabinSection,
 }
 
 export const RenderBlocks: React.FC<{
@@ -62,6 +64,16 @@ export const RenderBlocks: React.FC<{
       <Fragment>
         {blocks.map((block, index) => {
           const { blockType } = block
+
+          if (blockType === 'lightBoxGallerySection') {
+            return (
+              <Fragment key={index}>
+                <Suspense fallback={<div>Loading...</div>}>
+                  <LightBoxGallerySection {...block} />
+                </Suspense>
+              </Fragment>
+            )
+          }
 
           if (blockType && blockType in blockComponents) {
             const Block = blockComponents[blockType]
