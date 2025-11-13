@@ -41,6 +41,7 @@ import { CtaFormSection } from '@/blocks/CtaFormSection/config'
 import { SliderSection } from '@/blocks/SliderSection/config'
 import { LightBoxGallerySection } from '@/blocks/LightBoxGallerySection/config'
 import { CabinSection } from '@/blocks/CabinSection/config'
+import { ContactItem } from '@/blocks/ContactItem/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   defaultSort: '-updatedAt',
@@ -118,6 +119,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 SliderSection,
                 LightBoxGallerySection,
                 CabinSection,
+                ContactItem,
               ],
               required: true,
               admin: {

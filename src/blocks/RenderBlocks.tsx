@@ -25,6 +25,7 @@ import { CtaFormSection } from '@/blocks/CtaFormSection/Component'
 import { SliderSection } from '@/blocks/SliderSection/Component'
 import { LightBoxGallerySection } from '@/blocks/LightBoxGallerySection/Component'
 import { CabinSection } from '@/blocks/CabinSection/Component'
+import { ContactItem } from '@/blocks/ContactItem/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -50,6 +51,7 @@ const blockComponents = {
   sliderSection: SliderSection,
   lightBoxGallerySection: LightBoxGallerySection,
   cabinSection: CabinSection,
+  contactItem: ContactItem,
 }
 
 export const RenderBlocks: React.FC<{

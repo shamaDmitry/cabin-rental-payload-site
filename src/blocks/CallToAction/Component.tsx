@@ -9,7 +9,7 @@ export const CallToActionBlock: React.FC<CTABlockProps> = (props) => {
   const { links, richText } = props
 
   return (
-    <div className="container">
+    <div className="container my-4">
       <div className="bg-card rounded border-border border p-4 flex flex-col gap-8 md:flex-row md:justify-between md:items-center">
         <div className="max-w-3xl flex items-center">
           {richText && <RichText className="mb-0" data={richText} enableGutter={false} />}

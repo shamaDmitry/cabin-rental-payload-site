@@ -269,6 +269,7 @@ export interface Page {
     | SliderSection
     | LightBoxGallerySection
     | CabinSection
+    | ContactItem
   )[];
   meta?: {
     title?: string | null;
@@ -1499,6 +1500,43 @@ export interface CabinSection {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactItem".
+ */
+export interface ContactItem {
+  icon: {
+    /**
+     * Optional: choose a Lucide icon (the name of the icon exported from `lucide-react`). Leave empty for no icon.
+     */
+    icon:
+      | ''
+      | 'ExternalLink'
+      | 'ArrowRight'
+      | 'ArrowUpRight'
+      | 'Menu'
+      | 'Search'
+      | 'Check'
+      | 'ChevronRight'
+      | 'ChevronLeft'
+      | 'Facebook'
+      | 'Instagram'
+      | 'Linkedin'
+      | 'Twitter'
+      | 'MapPin'
+      | 'Phone'
+      | 'Mail'
+      | 'Calendar'
+      | 'User'
+      | 'Star'
+      | 'Heart';
+  };
+  title: string;
+  body: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'contactItem';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "galleryMedias".
  */
 export interface GalleryMedia {
@@ -1963,6 +2001,7 @@ export interface PagesSelect<T extends boolean = true> {
         sliderSection?: T | SliderSectionSelect<T>;
         lightBoxGallerySection?: T | LightBoxGallerySectionSelect<T>;
         cabinSection?: T | CabinSectionSelect<T>;
+        contactItem?: T | ContactItemSelect<T>;
       };
   meta?:
     | T
@@ -2337,6 +2376,21 @@ export interface CabinSectionSelect<T extends boolean = true> {
   headline?: T;
   backgroundImage?: T;
   cabin?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactItem_select".
+ */
+export interface ContactItemSelect<T extends boolean = true> {
+  icon?:
+    | T
+    | {
+        icon?: T;
+      };
+  title?: T;
+  body?: T;
   id?: T;
   blockName?: T;
 }
