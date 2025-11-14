@@ -1,17 +1,17 @@
-import { FC, ReactNode } from "react";
-import Headline from "../core/Headline";
+import { FC, ReactNode } from 'react'
+import Headline from '../core/Headline'
 
-interface ContactItemProps {
+export interface ContactItemProps {
   data: {
-    id: string;
-    title: string;
-    description: ReactNode;
-    icon: ReactNode;
-  };
+    id: string
+    title: string
+    description: ReactNode
+    icon: ReactNode
+  }
 }
 
 const ContactItem: FC<ContactItemProps> = ({ data }) => {
-  const { title, description, icon } = data;
+  const { title, description, icon } = data
 
   return (
     <div className="flex flex-row gap-5">
@@ -25,7 +25,7 @@ const ContactItem: FC<ContactItemProps> = ({ data }) => {
         <div className="">{description}</div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ContactItem;
+export default ContactItem

@@ -1,6 +1,6 @@
 import AboutForm from '@/components/about/AboutForm'
 import AddressRow from '@/components/AddressRow'
-import ContactGallery from '@/components/contact/ContactGallery'
+// import ContactGallery from '@/components/contact/ContactGallery'
 import ContactItem from '@/components/contact/ContactItem'
 import MapSection from '@/components/contact/MapSection'
 import Container from '@/components/core/Container'
@@ -76,9 +76,7 @@ const ContactPage = () => {
           </div>
         </Container>
 
-        <Container className="mt-12">
-          <ContactGallery images={images} />
-        </Container>
+        <Container className="mt-12">{/* <ContactGallery images={images} /> */}</Container>
       </section>
 
       <MapSection />

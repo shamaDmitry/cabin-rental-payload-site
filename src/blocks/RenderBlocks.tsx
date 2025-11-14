@@ -26,6 +26,8 @@ import { SliderSection } from '@/blocks/SliderSection/Component'
 import { LightBoxGallerySection } from '@/blocks/LightBoxGallerySection/Component'
 import { CabinSection } from '@/blocks/CabinSection/Component'
 import { ContactItem } from '@/blocks/ContactItem/Component'
+import { ContactContentSection } from '@/blocks/ContactContentSection/Component'
+import { ContactGallery } from '@/blocks/ContactGallery/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -52,6 +54,8 @@ const blockComponents = {
   lightBoxGallerySection: LightBoxGallerySection,
   cabinSection: CabinSection,
   contactItem: ContactItem,
+  contactContentSection: ContactContentSection,
+  contactGallery: ContactGallery,
 }
 
 export const RenderBlocks: React.FC<{

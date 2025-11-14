@@ -5,11 +5,7 @@ export const ContactItem: Block = {
   slug: 'contactItem',
   interfaceName: 'ContactItem',
   fields: [
-    icon({
-      overrides: {
-        required: true,
-      },
-    }),
+    icon(),
     {
       name: 'title',
       type: 'text',
