@@ -8784,6 +8784,12 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Header {
   id: string;
+  phones?:
+    | {
+        phone: string;
+        id?: string | null;
+      }[]
+    | null;
   navItems?:
     | {
         link?: {
@@ -8899,6 +8905,12 @@ export interface Footer {
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
+  phones?:
+    | T
+    | {
+        phone?: T;
+        id?: T;
+      };
   navItems?:
     | T
     | {
