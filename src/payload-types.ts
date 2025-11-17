@@ -271,6 +271,8 @@ export interface Page {
     | CabinSection
     | ContactItem
     | ContactContentSection
+    | ContactUsFormSection
+    | MapSection
   )[];
   meta?: {
     title?: string | null;
@@ -7138,12 +7140,58 @@ export interface ContactGallery {
    * Upload up to 3 images for the gallery
    */
   images: {
-    image?: (string | null) | Media;
+    image: string | Media;
     id?: string | null;
   }[];
   id?: string | null;
   blockName?: string | null;
   blockType: 'contactGallery';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactUsFormSection".
+ */
+export interface ContactUsFormSection {
+  backgroundImage?: (string | null) | Media;
+  headline: string;
+  description?: string | null;
+  address: {
+    label: string;
+    content: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    };
+    id?: string | null;
+  }[];
+  form: string | Form;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'contactUsFormSection';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MapSection".
+ */
+export interface MapSection {
+  /**
+   * @minItems 2
+   * @maxItems 2
+   */
+  coordinates: [number, number];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'mapSection';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -7613,6 +7661,8 @@ export interface PagesSelect<T extends boolean = true> {
         cabinSection?: T | CabinSectionSelect<T>;
         contactItem?: T | ContactItemSelect<T>;
         contactContentSection?: T | ContactContentSectionSelect<T>;
+        contactUsFormSection?: T | ContactUsFormSectionSelect<T>;
+        mapSection?: T | MapSectionSelect<T>;
       };
   meta?:
     | T
@@ -8034,6 +8084,34 @@ export interface ContactGallerySelect<T extends boolean = true> {
         image?: T;
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactUsFormSection_select".
+ */
+export interface ContactUsFormSectionSelect<T extends boolean = true> {
+  backgroundImage?: T;
+  headline?: T;
+  description?: T;
+  address?:
+    | T
+    | {
+        label?: T;
+        content?: T;
+        id?: T;
+      };
+  form?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MapSection_select".
+ */
+export interface MapSectionSelect<T extends boolean = true> {
+  coordinates?: T;
   id?: T;
   blockName?: T;
 }

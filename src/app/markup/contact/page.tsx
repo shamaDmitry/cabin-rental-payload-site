@@ -100,7 +100,7 @@ const ContactPage = () => {
               </p>
 
               <div className="table w-full mt-11">
-                <AddressRow
+                {/* <AddressRow
                   label="Write Us"
                   content={<Link href="mailto:yosemite@email.com">yosemite@email.com</Link>}
                 />
@@ -120,7 +120,7 @@ const ContactPage = () => {
                       Yosemite Mariposa County, <br /> Ca, USA
                     </span>
                   }
-                />
+                /> */}
               </div>
             </div>
 

@@ -1,5 +1,5 @@
 import deepMerge from '@/utilities/deepMerge'
-import type { Field, GroupField, RowField } from 'payload'
+import type { Field, GroupField } from 'payload'
 import * as LucideIcons from 'lucide-react'
 
 type IconType = (options?: { overrides?: Partial<GroupField> }) => Field

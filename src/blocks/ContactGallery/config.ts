@@ -18,6 +18,7 @@ export const ContactGallery: Block = {
         {
           name: 'image',
           type: 'upload',
+          required: true,
           relationTo: 'media',
         },
       ],

@@ -43,6 +43,8 @@ import { LightBoxGallerySection } from '@/blocks/LightBoxGallerySection/config'
 import { CabinSection } from '@/blocks/CabinSection/config'
 import { ContactItem } from '@/blocks/ContactItem/config'
 import { ContactContentSection } from '@/blocks/ContactContentSection/config'
+import { ContactUsFormSection } from '@/blocks/ContactUsFormSection/config'
+import { MapSection } from '@/blocks/MapSection/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   defaultSort: '-updatedAt',
@@ -122,6 +124,8 @@ export const Pages: CollectionConfig<'pages'> = {
                 CabinSection,
                 ContactItem,
                 ContactContentSection,
+                ContactUsFormSection,
+                MapSection,
               ],
               required: true,
               admin: {

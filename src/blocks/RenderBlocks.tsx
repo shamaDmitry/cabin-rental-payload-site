@@ -28,6 +28,8 @@ import { CabinSection } from '@/blocks/CabinSection/Component'
 import { ContactItem } from '@/blocks/ContactItem/Component'
 import { ContactContentSection } from '@/blocks/ContactContentSection/Component'
 import { ContactGallery } from '@/blocks/ContactGallery/Component'
+import { ContactUsFormSection } from '@/blocks/ContactUsFormSection/Component'
+import { MapSection } from '@/blocks/MapSection/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -56,6 +58,8 @@ const blockComponents = {
   contactItem: ContactItem,
   contactContentSection: ContactContentSection,
   contactGallery: ContactGallery,
+  contactUsFormSection: ContactUsFormSection,
+  mapSection: MapSection,
 }
 
 export const RenderBlocks: React.FC<{

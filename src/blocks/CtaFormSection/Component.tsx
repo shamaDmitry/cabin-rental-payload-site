@@ -31,7 +31,7 @@ export const CtaFormSection: React.FC<CtaFormSectionProps> = (props) => {
             </div>
 
             <div className="bg-[#282520cc] py-10 px-8">
-              <FormBlock enableIntro={false} form={form as FormType}></FormBlock>
+              <FormBlock enableIntro={false} form={form as FormType} />
             </div>
           </div>
         </Container>
