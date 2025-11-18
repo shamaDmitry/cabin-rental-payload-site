@@ -15,6 +15,7 @@ import { LivePreviewListener } from '@/components/LivePreviewListener'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
+
   const pages = await payload.find({
     collection: 'pages',
     draft: false,
@@ -111,6 +112,9 @@ const queryPageBySlug = cache(async ({ slug }: { slug: string }) => {
     where: {
       slug: {
         equals: slug,
+      },
+      _status: {
+        not_equals: 'draft',
       },
     },
   })

@@ -1,23 +1,26 @@
 'use client'
+
 import { useHeaderTheme } from '@/providers/HeaderTheme'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
-import type { Header } from '@/payload-types'
+import type { Header, Media } from '@/payload-types'
 
-// import { Logo } from '@/components/Logo/Logo'
 import { HeaderNav } from './Nav'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Menu } from 'lucide-react'
+import { getMediaSrc } from '@/utilities/getMediaSrc'
+import RichText from '@/components/RichText'
 
 interface HeaderClientProps {
   data: Header
 }
 
 export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
-  const { phones } = data
+  const { phones, logo, location } = data
+  const logoData = logo as Media
 
   /* Storing the value in a useState to avoid hydration errors */
   const [theme, setTheme] = useState<string | null>(null)
@@ -36,36 +39,33 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
 
   return (
     <>
-      {/* <header className="container relative z-20   " {...(theme ? { 'data-theme': theme } : {})}>
-        <div className="py-8 flex justify-between">
-          <Link href="/">
-            <Logo loading="eager" priority="high" className="invert dark:invert-0" />
-          </Link>
-
-          <HeaderNav data={data} />
-        </div>
-      </header> */}
-
       <header className="">
         <div className="">
           <div className="container mx-auto py-8 px-6 md:px-4 max-w-7xl">
             <div className="hidden md:flex items-center justify-between -mx-4">
               <div className="mx-4 w-1/5">
-                <p className="text-center flex flex-col">
-                  <span>Yosemite Mariposa</span>
-                  <span>County, Ca, USA</span>
-                </p>
+                <RichText data={location} className="text-center flex flex-col" />
               </div>
 
               <div className="mx-4 flex-1 text-center">
                 <Link href="/" className="inline-flex">
-                  <Image src="/images/logo.webp" alt="logo" width={181} height={79} />
+                  <Image
+                    src={getMediaSrc(logoData)}
+                    alt={logoData.alt || ''}
+                    width={logoData.width || 181}
+                    height={logoData.height || 79}
+                  />
                 </Link>
               </div>
 
               <div className="mx-4 w-1/5 flex flex-col items-end text-primary">
-                <Link href="tel:+12345678900">+1 (234) 567 89 00</Link>
-                <Link href="tel:+12345678901">+1 (234) 567 89 01</Link>
+                {phones.map((phone) => {
+                  return (
+                    <Link key={phone.id} href={`tel:${phone.value}`}>
+                      {phone.phone}
+                    </Link>
+                  )
+                })}
               </div>
             </div>
 

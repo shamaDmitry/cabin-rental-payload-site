@@ -1210,6 +1210,8 @@ export interface TestimonialSection {
   bgImage?: (string | null) | Media;
   images: {
     image?: (string | null) | Media;
+    colSpan: number;
+    rowSpan: number;
     id?: string | null;
   }[];
   link: {
@@ -7890,6 +7892,8 @@ export interface TestimonialSectionSelect<T extends boolean = true> {
     | T
     | {
         image?: T;
+        colSpan?: T;
+        rowSpan?: T;
         id?: T;
       };
   link?:
@@ -8784,12 +8788,27 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Header {
   id: string;
-  phones?:
-    | {
-        phone: string;
-        id?: string | null;
-      }[]
-    | null;
+  location: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  logo: string | Media;
+  phones: {
+    phone: string;
+    value: string;
+    id?: string | null;
+  }[];
   navItems?:
     | {
         link?: {
@@ -8905,10 +8924,13 @@ export interface Footer {
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
+  location?: T;
+  logo?: T;
   phones?:
     | T
     | {
         phone?: T;
+        value?: T;
         id?: T;
       };
   navItems?:

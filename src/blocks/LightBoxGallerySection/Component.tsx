@@ -87,7 +87,7 @@ export const LightBoxGallerySection: React.FC<LightBoxGallerySectionProps> = (pr
 
           {isLoading && <p className="text-center">Loading...</p>}
 
-          {data.length === 0 && <p className="text-center">Nothing is here</p>}
+          {!isLoading && data.length === 0 && <p className="text-center">Nothing is here</p>}
 
           {data.length > 0 && <GalleryLightbox slides={data} />}
         </Container>

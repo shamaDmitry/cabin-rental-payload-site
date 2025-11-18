@@ -27,6 +27,18 @@ export const TestimonialSection: Block = {
           type: 'upload',
           relationTo: 'media',
         },
+        {
+          name: 'colSpan',
+          type: 'number',
+          label: 'Column span',
+          required: true,
+        },
+        {
+          name: 'rowSpan',
+          type: 'number',
+          label: 'Row span',
+          required: true,
+        },
       ],
     },
     link(),

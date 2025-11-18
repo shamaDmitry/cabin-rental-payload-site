@@ -30,7 +30,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </head>
 
       <body className="min-h-screen flex flex-col">
-        <NextTopLoader />
+        <NextTopLoader color="var(--primary)" />
 
         <Providers>
           <AdminBar
