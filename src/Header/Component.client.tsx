@@ -8,11 +8,9 @@ import React, { useEffect, useState } from 'react'
 import type { Header, Media } from '@/payload-types'
 
 import { HeaderNav } from './Nav'
-import Image from 'next/image'
-import { Button } from '@/components/ui/button'
-import { Menu } from 'lucide-react'
-import { getMediaSrc } from '@/utilities/getMediaSrc'
 import RichText from '@/components/RichText'
+import Logo from '@/components/Logo'
+import MobileMenu from './MobileMenu'
 
 interface HeaderClientProps {
   data: Header
@@ -40,45 +38,28 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   return (
     <>
       <header className="">
-        <div className="">
-          <div className="container mx-auto py-8 px-6 md:px-4 max-w-7xl">
-            <div className="hidden md:flex items-center justify-between -mx-4">
-              <div className="mx-4 w-1/5">
-                <RichText data={location} className="text-center flex flex-col" />
-              </div>
-
-              <div className="mx-4 flex-1 text-center">
-                <Link href="/" className="inline-flex">
-                  <Image
-                    src={getMediaSrc(logoData)}
-                    alt={logoData.alt || ''}
-                    width={logoData.width || 181}
-                    height={logoData.height || 79}
-                  />
-                </Link>
-              </div>
-
-              <div className="mx-4 w-1/5 flex flex-col items-end text-primary">
-                {phones.map((phone) => {
-                  return (
-                    <Link key={phone.id} href={`tel:${phone.value}`}>
-                      {phone.phone}
-                    </Link>
-                  )
-                })}
-              </div>
+        <div className="container mx-auto md:py-8 p-6 md:px-4 max-w-7xl">
+          <div className="hidden md:flex items-center justify-between -mx-4">
+            <div className="mx-4 w-1/5">
+              <RichText data={location} className="text-center flex flex-col" />
             </div>
 
-            <div className="flex md:hidden items-center justify-between gap-4">
-              <Link href="/" className="inline-flex">
-                <Image src="/images/logo.webp" alt="logo" width={181} height={79} />
-              </Link>
+            <div className="mx-4 flex-1 text-center">
+              <Logo href="/" logoData={logoData} />
+            </div>
 
-              <Button className="border-0" variant={'outline'}>
-                <Menu />
-              </Button>
+            <div className="mx-4 w-1/5 flex flex-col items-end text-primary">
+              {phones.map((phone) => {
+                return (
+                  <Link key={phone.id} href={`tel:${phone.value}`}>
+                    {phone.phone}
+                  </Link>
+                )
+              })}
             </div>
           </div>
+
+          <MobileMenu location={location} logoData={logoData} navData={data} phones={phones} />
         </div>
 
         <HeaderNav data={data} className="hidden md:flex" />

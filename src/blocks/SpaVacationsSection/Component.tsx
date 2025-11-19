@@ -1,4 +1,4 @@
-import type { SpaVacationsSection as SpaVacationsSectionProps } from '@/payload-types'
+import type { Media, SpaVacationsSection as SpaVacationsSectionProps } from '@/payload-types'
 
 import React from 'react'
 import Headline from '@/components/core/Headline'
@@ -12,6 +12,8 @@ export const SpaVacationsSection: React.FC<
   }
 > = (props) => {
   const { headline, description, media, backgroundImage } = props
+
+  const imageData = media as Media
 
   return (
     <>
@@ -35,8 +37,8 @@ export const SpaVacationsSection: React.FC<
               className="w-full max-h-[380px] object-cover"
               src={getMediaSrc(media)}
               alt={headline}
-              width={1000}
-              height={380}
+              width={imageData.width || 1000}
+              height={imageData.height || 500}
             />
           </figure>
         </Container>

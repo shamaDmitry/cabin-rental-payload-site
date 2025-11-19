@@ -54,7 +54,7 @@ export const plugins: Plugin[] = [
   }),
   seoPlugin({
     generateTitle,
-    generateURL,
+    // generateURL,
   }),
   formBuilderPlugin({
     fields: {

@@ -113,9 +113,9 @@ const queryPageBySlug = cache(async ({ slug }: { slug: string }) => {
       slug: {
         equals: slug,
       },
-      _status: {
-        not_equals: 'draft',
-      },
+      // _status: {
+      //   not_equals: 'draft',
+      // },
     },
   })
 
