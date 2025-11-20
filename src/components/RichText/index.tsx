@@ -19,17 +19,24 @@ import type {
   CafeSection as CafeSectionProps,
   CallToActionBlock as CTABlockProps,
   MediaBlock as MediaBlockProps,
+  ContactItem as ContactItemProps,
 } from '@/payload-types'
 import { BannerBlock } from '@/blocks/Banner/Component'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { cn } from '@/utilities/ui'
 import { CafeSection } from '@/blocks/CafeSection/Component'
+import { ContactItem } from '@/blocks/ContactItem/Component'
 
 // example block/inline blocks
 type NodeTypes =
   | DefaultNodeTypes
   | SerializedBlockNode<
-      CTABlockProps | MediaBlockProps | BannerBlockProps | CodeBlockProps | CafeSectionProps
+      | CTABlockProps
+      | MediaBlockProps
+      | BannerBlockProps
+      | CodeBlockProps
+      | CafeSectionProps
+      | ContactItemProps
     >
   | SerializedInlineBlockNode<BannerBlockProps>
 
@@ -60,6 +67,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
     code: ({ node }) => <CodeBlock className="col-start-2" {...node.fields} />,
     cta: ({ node }) => <CallToActionBlock {...node.fields} />,
     cafeSection: ({ node }) => <CafeSection {...node.fields} />,
+    contactItem: ({ node }) => <ContactItem {...node.fields} />,
   },
   // example block/inline blocks
   inlineBlocks: {

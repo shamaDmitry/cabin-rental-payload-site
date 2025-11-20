@@ -16,6 +16,10 @@ export const icon: IconType = ({ overrides = {} } = {}) => {
           description:
             'Optional: choose a Lucide icon (the name of the icon exported from `lucide-react`). Leave empty for no icon.',
           width: '50%',
+          components: {
+            // Field: '@/fields/IconSelectField#IconSelectField',
+            // Label: '@/fields/IconSelectLabel#IconSelectLabel',
+          },
         },
         label: 'Icon',
         options: [

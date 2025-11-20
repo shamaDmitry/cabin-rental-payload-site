@@ -1,3 +1,5 @@
+'use client'
+
 import RichText from '@/components/RichText'
 import {
   Drawer,
@@ -12,10 +14,11 @@ import { HeaderNav } from './Nav'
 import { Button } from '@/components/ui/button'
 import { Menu, X } from 'lucide-react'
 import Logo from '@/components/Logo'
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { Header, Media } from '@/payload-types'
 import { DefaultTypedEditorState } from '@payloadcms/richtext-lexical'
+import { usePathname } from 'next/navigation'
 
 interface MobileMenuProps {
   logoData: Media
@@ -30,6 +33,11 @@ interface MobileMenuProps {
 
 const MobileMenu: FC<MobileMenuProps> = ({ logoData, navData, location, phones }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const pathname = usePathname()
+
+  useEffect(() => {
+    setIsMobileMenuOpen(false)
+  }, [pathname])
 
   return (
     <Drawer
