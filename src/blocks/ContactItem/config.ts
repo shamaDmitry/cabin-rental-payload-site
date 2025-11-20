@@ -5,7 +5,6 @@ export const ContactItem: Block = {
   slug: 'contactItem',
   interfaceName: 'ContactItem',
   fields: [
-    icon(),
     {
       name: 'title',
       type: 'text',
@@ -18,5 +17,6 @@ export const ContactItem: Block = {
       label: 'Body',
       required: true,
     },
+    icon(),
   ],
 }

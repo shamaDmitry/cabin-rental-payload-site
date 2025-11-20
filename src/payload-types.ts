@@ -1508,6 +1508,8 @@ export interface CabinSection {
  * via the `definition` "ContactItem".
  */
 export interface ContactItem {
+  title: string;
+  body: string;
   /**
    * Optional: choose a Lucide icon (the name of the icon exported from `lucide-react`). Leave empty for no icon.
    */
@@ -7113,8 +7115,6 @@ export interface ContactItem {
     | 'default'
     | 'icons';
   iconSize?: ('16' | '20' | '24' | '28' | '32' | '36' | '40') | null;
-  title: string;
-  body: string;
   id?: string | null;
   blockName?: string | null;
   blockType: 'contactItem';
@@ -8049,10 +8049,10 @@ export interface CabinSectionSelect<T extends boolean = true> {
  * via the `definition` "ContactItem_select".
  */
 export interface ContactItemSelect<T extends boolean = true> {
-  icon?: T;
-  iconSize?: T;
   title?: T;
   body?: T;
+  icon?: T;
+  iconSize?: T;
   id?: T;
   blockName?: T;
 }

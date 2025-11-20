@@ -35,6 +35,8 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [headerTheme])
 
+  console.log('data client', data)
+
   return (
     <>
       <header className="">
