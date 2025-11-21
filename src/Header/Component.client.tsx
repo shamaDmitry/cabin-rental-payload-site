@@ -41,7 +41,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
         <div className="container mx-auto md:py-8 p-6 md:px-4 max-w-7xl">
           <div className="hidden md:flex items-center justify-between -mx-4">
             <div className="mx-4 w-1/5">
-              <RichText data={location} className="text-center flex flex-col" />
+              <RichText data={location} enableProse={false} className="text-center flex flex-col" />
             </div>
 
             <div className="mx-4 flex-1 text-center">
