@@ -15,6 +15,7 @@ export async function Footer() {
 
   const navItems = footerData?.navItems || []
   const socialItems = footerData?.socialLinks || []
+  const themeSelector = footerData?.['theme-selector']
 
   return (
     <>
@@ -58,7 +59,7 @@ export async function Footer() {
             <p>&copy; Created by</p>
             <p>All rights Reserved</p>
 
-            <ThemeSelector />
+            {themeSelector && <ThemeSelector />}
           </div>
         </Container>
       </footer>

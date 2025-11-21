@@ -10,30 +10,45 @@ export const Footer: GlobalConfig = {
   },
   fields: [
     {
-      name: 'navItems',
-      type: 'array',
+      type: 'group',
+
       fields: [
-        link({
-          appearances: false,
-        }),
+        {
+          name: 'navItems',
+          type: 'array',
+          fields: [
+            link({
+              appearances: false,
+            }),
+          ],
+          maxRows: 6,
+          admin: {
+            initCollapsed: true,
+            width: '50%',
+            components: {
+              RowLabel: '@/Footer/RowLabel#RowLabel',
+            },
+          },
+        },
+        {
+          name: 'socialLinks',
+          type: 'array',
+          fields: [link()],
+          admin: {
+            width: '50%',
+            components: {
+              RowLabel: '@/Footer/RowLabel#RowLabel',
+            },
+          },
+        },
       ],
-      maxRows: 6,
-      admin: {
-        initCollapsed: true,
-        components: {
-          RowLabel: '@/Footer/RowLabel#RowLabel',
-        },
-      },
     },
+
     {
-      name: 'socialLinks',
-      type: 'array',
-      fields: [link()],
-      admin: {
-        components: {
-          RowLabel: '@/Footer/RowLabel#RowLabel',
-        },
-      },
+      name: 'theme-selector',
+      type: 'checkbox',
+      label: 'Theme Selector',
+      admin: {},
     },
   ],
   hooks: {

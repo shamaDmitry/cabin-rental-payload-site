@@ -8983,6 +8983,7 @@ export interface Footer {
         id?: string | null;
       }[]
     | null;
+  'theme-selector'?: boolean | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -9057,6 +9058,7 @@ export interface FooterSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  'theme-selector'?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
