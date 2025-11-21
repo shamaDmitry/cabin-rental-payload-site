@@ -20,12 +20,16 @@ import type {
   CallToActionBlock as CTABlockProps,
   MediaBlock as MediaBlockProps,
   ContactItem as ContactItemProps,
+  RentalPoliciesSection as RentalPoliciesSectionProps,
+  ContentBlock as ContentBlockProps,
 } from '@/payload-types'
 import { BannerBlock } from '@/blocks/Banner/Component'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { cn } from '@/utilities/ui'
 import { CafeSection } from '@/blocks/CafeSection/Component'
 import { ContactItem } from '@/blocks/ContactItem/Component'
+import { RentalPoliciesSection } from '@/blocks/RentalPoliciesSection/Component'
+import { ContentBlock } from '@/blocks/Content/Component'
 
 // example block/inline blocks
 type NodeTypes =
@@ -37,6 +41,8 @@ type NodeTypes =
       | CodeBlockProps
       | CafeSectionProps
       | ContactItemProps
+      | RentalPoliciesSectionProps
+      | ContentBlockProps
     >
   | SerializedInlineBlockNode<BannerBlockProps>
 
@@ -68,6 +74,8 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
     cta: ({ node }) => <CallToActionBlock {...node.fields} />,
     cafeSection: ({ node }) => <CafeSection {...node.fields} />,
     contactItem: ({ node }) => <ContactItem {...node.fields} />,
+    content: ({ node }) => <ContentBlock {...node.fields} />,
+    rentalPoliciesSection: ({ node }) => <RentalPoliciesSection {...node.fields} />,
   },
   // example block/inline blocks
   inlineBlocks: {

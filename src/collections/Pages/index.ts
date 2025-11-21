@@ -45,6 +45,7 @@ import { ContactItem } from '@/blocks/ContactItem/config'
 import { ContactContentSection } from '@/blocks/ContactContentSection/config'
 import { ContactUsFormSection } from '@/blocks/ContactUsFormSection/config'
 import { MapSection } from '@/blocks/MapSection/config'
+import { RentalPoliciesSection } from '@/blocks/RentalPoliciesSection/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   defaultSort: '-updatedAt',
@@ -126,6 +127,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 ContactContentSection,
                 ContactUsFormSection,
                 MapSection,
+                RentalPoliciesSection,
               ],
               required: true,
               admin: {

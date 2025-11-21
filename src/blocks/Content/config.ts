@@ -6,6 +6,7 @@ import {
   HeadingFeature,
   InlineToolbarFeature,
   lexicalEditor,
+  LinkFeature,
 } from '@payloadcms/richtext-lexical'
 
 import { link } from '@/fields/link'
@@ -48,6 +49,23 @@ const columnFields: Field[] = [
           HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
           FixedToolbarFeature(),
           InlineToolbarFeature(),
+          LinkFeature({
+            fields: ({ defaultFields }) => [
+              ...defaultFields,
+              {
+                name: 'rel',
+                label: 'Rel Attribute',
+                type: 'select',
+                hasMany: true,
+                options: ['noopener', 'noreferrer', 'nofollow'],
+                admin: {
+                  description:
+                    'The rel attribute defines the relationship between a linked resource and the current document. This is a custom link field.',
+                },
+              },
+              { name: 'class', type: 'select', options: ['primary', 'secondary'] },
+            ],
+          }),
           BlocksFeature({ blocks: [ContactItem, Banner, Code, MediaBlock] }),
         ]
       },

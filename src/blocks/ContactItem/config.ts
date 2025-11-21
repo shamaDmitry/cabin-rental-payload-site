@@ -1,5 +1,12 @@
 import { icon } from '@/fields/icon'
 import type { Block } from 'payload'
+import {
+  BlocksFeature,
+  FixedToolbarFeature,
+  InlineToolbarFeature,
+  lexicalEditor,
+} from '@payloadcms/richtext-lexical'
+import { Banner } from '@/blocks/Banner/config'
 
 export const ContactItem: Block = {
   slug: 'contactItem',
@@ -12,10 +19,19 @@ export const ContactItem: Block = {
       label: 'Title',
     },
     {
-      name: 'body',
-      type: 'textarea',
-      label: 'Body',
-      required: true,
+      name: 'richText',
+      type: 'richText',
+      label: 'Rich Text',
+      editor: lexicalEditor({
+        features: ({ rootFeatures }) => {
+          return [
+            ...rootFeatures,
+            FixedToolbarFeature(),
+            InlineToolbarFeature(),
+            BlocksFeature({ blocks: [Banner] }),
+          ]
+        },
+      }),
     },
     icon(),
   ],

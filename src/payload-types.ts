@@ -273,6 +273,7 @@ export interface Page {
     | ContactContentSection
     | ContactUsFormSection
     | MapSection
+    | RentalPoliciesSection
   )[];
   meta?: {
     title?: string | null;
@@ -1509,7 +1510,21 @@ export interface CabinSection {
  */
 export interface ContactItem {
   title: string;
-  body: string;
+  richText?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   /**
    * Optional: choose a Lucide icon (the name of the icon exported from `lucide-react`). Leave empty for no icon.
    */
@@ -7197,6 +7212,39 @@ export interface MapSection {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "RentalPoliciesSection".
+ */
+export interface RentalPoliciesSection {
+  headline: string;
+  backgroundImage?: (string | null) | Media;
+  contacts?:
+    | {
+        name: string;
+        phone: string;
+        id?: string | null;
+      }[]
+    | null;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'rentalPoliciesSection';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "galleryMedias".
  */
 export interface GalleryMedia {
@@ -7665,6 +7713,7 @@ export interface PagesSelect<T extends boolean = true> {
         contactContentSection?: T | ContactContentSectionSelect<T>;
         contactUsFormSection?: T | ContactUsFormSectionSelect<T>;
         mapSection?: T | MapSectionSelect<T>;
+        rentalPoliciesSection?: T | RentalPoliciesSectionSelect<T>;
       };
   meta?:
     | T
@@ -8050,7 +8099,7 @@ export interface CabinSectionSelect<T extends boolean = true> {
  */
 export interface ContactItemSelect<T extends boolean = true> {
   title?: T;
-  body?: T;
+  richText?: T;
   icon?: T;
   iconSize?: T;
   id?: T;
@@ -8116,6 +8165,24 @@ export interface ContactUsFormSectionSelect<T extends boolean = true> {
  */
 export interface MapSectionSelect<T extends boolean = true> {
   coordinates?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "RentalPoliciesSection_select".
+ */
+export interface RentalPoliciesSectionSelect<T extends boolean = true> {
+  headline?: T;
+  backgroundImage?: T;
+  contacts?:
+    | T
+    | {
+        name?: T;
+        phone?: T;
+        id?: T;
+      };
+  content?: T;
   id?: T;
   blockName?: T;
 }
