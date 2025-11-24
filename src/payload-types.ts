@@ -1277,6 +1277,8 @@ export interface TestimonialSection {
  * via the `definition` "HomeHero".
  */
 export interface HomeHero {
+  headline: string;
+  description?: string | null;
   bgImage: string | Media;
   form: string | Form;
   id?: string | null;
@@ -7968,6 +7970,8 @@ export interface TestimonialSectionSelect<T extends boolean = true> {
  * via the `definition` "HomeHero_select".
  */
 export interface HomeHeroSelect<T extends boolean = true> {
+  headline?: T;
+  description?: T;
   bgImage?: T;
   form?: T;
   id?: T;

@@ -12,8 +12,8 @@ import {
 import React from 'react'
 import { Controller } from 'react-hook-form'
 
-import { Error } from '../Error'
-import { Width } from '../Width'
+import { Error } from '@/blocks/Form/Error'
+import { Width } from '@/blocks/Form/Width'
 
 export const Select: React.FC<
   SelectField & {
@@ -40,9 +40,14 @@ export const Select: React.FC<
 
           return (
             <SelectComponent onValueChange={(val) => onChange(val)} value={controlledValue?.value}>
-              <SelectTrigger className="w-full" id={name}>
-                <SelectValue placeholder={label} />
+              <SelectTrigger id={name}>
+                {value ? (
+                  <SelectValue className="font-normal" />
+                ) : (
+                  <span className="text-muted-foreground font-normal">{label}</span>
+                )}
               </SelectTrigger>
+
               <SelectContent>
                 {options.map(({ label, value }) => {
                   return (
@@ -57,6 +62,7 @@ export const Select: React.FC<
         }}
         rules={{ required }}
       />
+
       {errors[name] && <Error name={name} />}
     </Width>
   )

@@ -15,7 +15,7 @@ export const HomeHero: React.FC<
     id?: string
   }
 > = (props) => {
-  const { bgImage, form } = props
+  const { headline, description, bgImage, form } = props
 
   return (
     <>
@@ -27,17 +27,17 @@ export const HomeHero: React.FC<
         }}
       >
         <Container>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="col-start-2 max-w-md ml-auto">
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="md:col-start-2 md:max-w-md w-full md:ml-auto">
               <Card className="p-14 px-10">
                 <CardContent className="text-center p-0">
                   <Headline level={3} className="mb-3">
-                    Yosemite Vacation Cabin Rental
+                    {headline}
                   </Headline>
 
-                  <p className="md:max-w-11/12 mx-auto mb-5 text-foreground/60">
-                    Plan your next vacation and enjoy the nature around you!
-                  </p>
+                  {description && (
+                    <p className="md:max-w-11/12 mx-auto mb-5 text-foreground/60">{description}</p>
+                  )}
 
                   <FormBlock enableIntro={true} form={form as FormType} />
                 </CardContent>

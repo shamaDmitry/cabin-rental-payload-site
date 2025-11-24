@@ -66,7 +66,7 @@ const MobileMenu: FC<MobileMenuProps> = ({ logoData, navData, location, phones }
           <DrawerDescription className="sr-only">Mobile menu</DrawerDescription>
         </DrawerHeader>
 
-        <div className="flex items-center justify-between gap-4 w-full">
+        <div className="flex items-center justify-between gap-4 w-full pb-4">
           <Logo href="/" logoData={logoData} className="w-40" />
 
           <DrawerClose asChild>

@@ -5,6 +5,15 @@ export const HomeHero: Block = {
   interfaceName: 'HomeHero',
   fields: [
     {
+      name: 'headline',
+      type: 'text',
+      required: true,
+    },
+    {
+      name: 'description',
+      type: 'textarea',
+    },
+    {
       name: 'bgImage',
       type: 'upload',
       admin: {
@@ -21,50 +30,5 @@ export const HomeHero: Block = {
       hasMany: false,
       relationTo: 'forms',
     },
-    // {
-    //   name: 'type',
-    //   type: 'select',
-    //   defaultValue: 'lowImpact',
-    //   label: 'Type',
-    //   options: [
-    //     {
-    //       label: 'None',
-    //       value: 'none',
-    //     },
-    //     {
-    //       label: 'High Impact',
-    //       value: 'highImpact',
-    //     },
-    //     {
-    //       label: 'Medium Impact',
-    //       value: 'mediumImpact',
-    //     },
-    //     {
-    //       label: 'Low Impact',
-    //       value: 'lowImpact',
-    //     },
-    //   ],
-    //   required: true,
-    // },
-    // {
-    //   name: 'richText',
-    //   type: 'richText',
-    //   editor: lexicalEditor({
-    //     features: ({ rootFeatures }) => {
-    //       return [
-    //         ...rootFeatures,
-    //         HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-    //         FixedToolbarFeature(),
-    //         InlineToolbarFeature(),
-    //       ]
-    //     },
-    //   }),
-    //   label: false,
-    // },
-    // linkGroup({
-    //   overrides: {
-    //     maxRows: 2,
-    //   },
-    // }),
   ],
 }
